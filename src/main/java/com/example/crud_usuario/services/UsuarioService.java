@@ -24,10 +24,20 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public UsuarioResponse register(UsuarioRequest UsuarioRequest){
-        var usuario = new Usuario();
-        BeanUtils.copyProperties(UsuarioRequest,usuario);
-        return new UsuarioResponse(usuarioRepository.save(usuario));
+    public UsuarioResponse register(UsuarioRequest usuarioRequest) {
+        if (usuarioRequest.senha().length() >= 8 && (
+                usuarioRequest.senha().contains("!") ||
+                        usuarioRequest.senha().contains(".") ||
+                        usuarioRequest.senha().contains("#") ||
+                        usuarioRequest.senha().contains("*") ||
+                        usuarioRequest.senha().contains("%") ||
+                        usuarioRequest.senha().contains("&"))) {
+            var usuario = new Usuario();
+            BeanUtils.copyProperties(usuarioRequest, usuario);
+            return new UsuarioResponse(usuarioRepository.save(usuario));
+        }
+        // Validar
+        throw new ResponseStatusException(HttpStatusCode.valueOf(304));
     }
 
     public List<Usuario> list(){
@@ -54,21 +64,21 @@ public class UsuarioService {
         if (usuarioOpt.isEmpty()){
             throw new ResponseStatusException(HttpStatusCode.valueOf(404));
         }
-        if (    !(usuarioUpdateRequest.senha().length()>=8 &&
+        if (    usuarioUpdateRequest.senha().length()>=8 &&(
                 usuarioUpdateRequest.senha().contains("!")||
                 usuarioUpdateRequest.senha().contains(".")||
                 usuarioUpdateRequest.senha().contains("#")||
                 usuarioUpdateRequest.senha().contains("*")||
                 usuarioUpdateRequest.senha().contains("%")||
                 usuarioUpdateRequest.senha().contains("&"))) {
-            throw new ResponseStatusException(HttpStatusCode.valueOf(404));
+            usuarioOpt.get().setEmail(usuarioUpdateRequest.email());
+            usuarioOpt.get().setSenha(usuarioUpdateRequest.senha());
+            usuarioOpt.get().setNome(usuarioUpdateRequest.nome());
+            usuarioOpt.get().setDataNascimento(usuarioUpdateRequest.dataNascimento());
+            return new UsuarioResponse(usuarioRepository.save(usuarioOpt.get()));
         }
-        usuarioOpt.get().setEmail(usuarioUpdateRequest.email());
-        usuarioOpt.get().setSenha(usuarioUpdateRequest.senha());
-        usuarioOpt.get().setNome(usuarioUpdateRequest.nome());
-        usuarioOpt.get().setDataNascimento(usuarioUpdateRequest.dataNascimento());
-        return new UsuarioResponse(usuarioRepository.save(usuarioOpt.get()));
-
+        // Validar
+        throw new ResponseStatusException(HttpStatusCode.valueOf(304));
 
     }
 
