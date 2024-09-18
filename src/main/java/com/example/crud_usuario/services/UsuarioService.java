@@ -27,7 +27,6 @@ public class UsuarioService {
     public UsuarioResponse register(UsuarioRequest UsuarioRequest){
         var usuario = new Usuario();
         BeanUtils.copyProperties(UsuarioRequest,usuario);
-        usuario.setId(null);
         return new UsuarioResponse(usuarioRepository.save(usuario));
     }
 
@@ -51,13 +50,25 @@ public class UsuarioService {
     }
 
     public UsuarioResponse update(Integer id, UsuarioUpdateRequest usuarioUpdateRequest){
-        if (usuarioRepository.findById(id).isEmpty()){
+        Optional<Usuario> usuarioOpt = Optional.ofNullable(findById(id));
+        if (usuarioOpt.isEmpty()){
             throw new ResponseStatusException(HttpStatusCode.valueOf(404));
         }
-        var usuario = new Usuario();
-        BeanUtils.copyProperties(usuarioUpdateRequest,usuario);
-        usuario.setId(id);
-        return new UsuarioResponse(usuarioRepository.save(usuario));
+        usuarioOpt.get().setEmail(usuarioUpdateRequest.email());
+        usuarioOpt.get().setSenha(usuarioUpdateRequest.senha());
+        usuarioOpt.get().setNome(usuarioUpdateRequest.nome());
+        usuarioOpt.get().setDataNascimento(usuarioUpdateRequest.dataNascimento());
+
+        return new UsuarioResponse(usuarioRepository.save(usuarioOpt.get()));
+    }
+
+    public UsuarioResponse updateNome(Integer id, UsuarioUpdateRequest usuarioUpdateRequest){
+        Optional<Usuario> buscaUsuario = Optional.ofNullable(findById(id));
+        if (buscaUsuario.isEmpty()){
+            throw new ResponseStatusException(HttpStatusCode.valueOf(404));
+        }
+        buscaUsuario.get().setNome(usuarioUpdateRequest.nome());
+        return new UsuarioResponse(usuarioRepository.save(buscaUsuario.get()));
     }
 
 

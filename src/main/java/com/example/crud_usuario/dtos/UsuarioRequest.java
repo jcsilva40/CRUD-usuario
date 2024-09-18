@@ -1,10 +1,11 @@
 package com.example.crud_usuario.dtos;
 
+import java.time.LocalDate;
+
 public record UsuarioRequest(
-         Integer id,
          String email,
          String senha,
          String nome,
-         String dataNascimento
+         LocalDate dataNascimento
 ) {
 }

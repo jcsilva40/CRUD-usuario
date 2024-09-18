@@ -1,10 +1,10 @@
-package com.example.crud_usuario;
+package com.example.CrudUsuarioAplicativo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CrudUsuarioApplicationTests {
+class CrudUsuarioAplicativoApplicationTests {
 
 	@Test
 	void contextLoads() {

@@ -13,8 +13,8 @@ public record UsuarioResponse(
     public UsuarioResponse(Usuario usuario) {
         this(
             usuario.getId(),
-            usuario.getNome(),
             usuario.getEmail(),
+            usuario.getNome(),
             usuario.getDataNascimento()
         );
     }

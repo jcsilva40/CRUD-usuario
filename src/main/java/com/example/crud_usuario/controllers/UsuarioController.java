@@ -41,6 +41,11 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(usuarioService.update(id, usuarioUpdateRequest));
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<UsuarioResponse> atualizarParcial(@PathVariable Integer id, @RequestBody UsuarioUpdateRequest usuarioUpdateRequest){
+        return ResponseEntity.status(200).body(usuarioService.updateNome(id, usuarioUpdateRequest));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         usuarioService.delete(id);
