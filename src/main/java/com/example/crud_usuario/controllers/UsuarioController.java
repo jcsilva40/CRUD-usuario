@@ -46,6 +46,7 @@ public class UsuarioController {
         return ResponseEntity.status(200).body(usuarioService.updateNome(id, usuarioUpdateRequest));
     }
 
+    //Não usado normalmente é optado por delete lógico
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         usuarioService.delete(id);

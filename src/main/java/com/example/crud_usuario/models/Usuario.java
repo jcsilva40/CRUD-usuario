@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.*;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
@@ -14,10 +15,22 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank
+    @Email
     private String email;
+
+    @NotBlank
     private String senha;
+
+    @NotBlank
     private String nome;
+
+    @PastOrPresent
     private LocalDate dataNascimento;
+
+
+
 
     public Integer getId() {
         return id;

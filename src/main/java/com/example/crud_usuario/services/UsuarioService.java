@@ -54,12 +54,22 @@ public class UsuarioService {
         if (usuarioOpt.isEmpty()){
             throw new ResponseStatusException(HttpStatusCode.valueOf(404));
         }
+        if (    !(usuarioUpdateRequest.senha().length()>=8 &&
+                usuarioUpdateRequest.senha().contains("!")||
+                usuarioUpdateRequest.senha().contains(".")||
+                usuarioUpdateRequest.senha().contains("#")||
+                usuarioUpdateRequest.senha().contains("*")||
+                usuarioUpdateRequest.senha().contains("%")||
+                usuarioUpdateRequest.senha().contains("&"))) {
+            throw new ResponseStatusException(HttpStatusCode.valueOf(404));
+        }
         usuarioOpt.get().setEmail(usuarioUpdateRequest.email());
         usuarioOpt.get().setSenha(usuarioUpdateRequest.senha());
         usuarioOpt.get().setNome(usuarioUpdateRequest.nome());
         usuarioOpt.get().setDataNascimento(usuarioUpdateRequest.dataNascimento());
-
         return new UsuarioResponse(usuarioRepository.save(usuarioOpt.get()));
+
+
     }
 
     public UsuarioResponse updateNome(Integer id, UsuarioUpdateRequest usuarioUpdateRequest){
