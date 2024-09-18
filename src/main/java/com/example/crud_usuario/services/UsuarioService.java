@@ -36,8 +36,7 @@ public class UsuarioService {
             BeanUtils.copyProperties(usuarioRequest, usuario);
             return new UsuarioResponse(usuarioRepository.save(usuario));
         }
-        // Validar
-        throw new ResponseStatusException(HttpStatusCode.valueOf(304));
+        throw new ResponseStatusException(HttpStatusCode.valueOf(400));
     }
 
     public List<Usuario> list(){
@@ -77,8 +76,7 @@ public class UsuarioService {
             usuarioOpt.get().setDataNascimento(usuarioUpdateRequest.dataNascimento());
             return new UsuarioResponse(usuarioRepository.save(usuarioOpt.get()));
         }
-        // Validar
-        throw new ResponseStatusException(HttpStatusCode.valueOf(304));
+        throw new ResponseStatusException(HttpStatusCode.valueOf(400));
 
     }
 
