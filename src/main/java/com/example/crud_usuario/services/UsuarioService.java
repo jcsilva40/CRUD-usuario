@@ -7,10 +7,13 @@ import com.example.crud_usuario.dtos.UsuarioUpdateRequest;
 import com.example.crud_usuario.models.Usuario;
 import com.example.crud_usuario.repositories.UsuarioRepository;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -36,7 +39,8 @@ public class UsuarioService {
             BeanUtils.copyProperties(usuarioRequest, usuario);
             return new UsuarioResponse(usuarioRepository.save(usuario));
         }
-        throw new ResponseStatusException(HttpStatusCode.valueOf(400));
+        // Validar
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
     public List<Usuario> list(){
@@ -46,14 +50,14 @@ public class UsuarioService {
     public Usuario findById(Integer id){
         Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
         if (usuarioOpt.isEmpty()){
-            throw new ResponseStatusException(HttpStatusCode.valueOf(404));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return usuarioOpt.get();
     }
 
     public void delete(Integer id){
         if (usuarioRepository.findById(id).isEmpty()){
-            throw new ResponseStatusException(HttpStatusCode.valueOf(404));
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         usuarioRepository.deleteById(id);
     }
@@ -61,7 +65,7 @@ public class UsuarioService {
     public UsuarioResponse update(Integer id, UsuarioUpdateRequest usuarioUpdateRequest){
         Optional<Usuario> usuarioOpt = Optional.ofNullable(findById(id));
         if (usuarioOpt.isEmpty()){
-            throw new ResponseStatusException(HttpStatusCode.valueOf(404));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         if (    usuarioUpdateRequest.senha().length()>=8 &&(
                 usuarioUpdateRequest.senha().contains("!")||
@@ -76,17 +80,18 @@ public class UsuarioService {
             usuarioOpt.get().setDataNascimento(usuarioUpdateRequest.dataNascimento());
             return new UsuarioResponse(usuarioRepository.save(usuarioOpt.get()));
         }
-        throw new ResponseStatusException(HttpStatusCode.valueOf(400));
+
+        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 
     }
 
-    public UsuarioResponse updateNome(Integer id, UsuarioUpdateRequest usuarioUpdateRequest){
+    public Usuario updateNome(Integer id, Usuario usuario){
         Optional<Usuario> buscaUsuario = Optional.ofNullable(findById(id));
         if (buscaUsuario.isEmpty()){
-            throw new ResponseStatusException(HttpStatusCode.valueOf(404));
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        buscaUsuario.get().setNome(usuarioUpdateRequest.nome());
-        return new UsuarioResponse(usuarioRepository.save(buscaUsuario.get()));
+        buscaUsuario.get().setNome(usuario.getNome());
+        return usuarioRepository.save(buscaUsuario.get());
     }
 
 
@@ -95,7 +100,7 @@ public class UsuarioService {
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmailAndSenha(email, senha);
 
         if (usuarioOpt.isEmpty()) {
-            throw new ResponseStatusException(HttpStatusCode.valueOf(401));
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
         return new LoginResponse(usuarioOpt.get());
     }

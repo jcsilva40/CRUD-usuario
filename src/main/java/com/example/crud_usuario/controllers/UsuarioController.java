@@ -6,11 +6,14 @@ import com.example.crud_usuario.dtos.UsuarioRequest;
 import com.example.crud_usuario.dtos.UsuarioUpdateRequest;
 import com.example.crud_usuario.models.Usuario;
 import com.example.crud_usuario.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.http.ResponseEntity.*;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -21,40 +24,40 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> listar(){
+    public ResponseEntity<List<Usuario>> list(){
         List<Usuario> usuarios = usuarioService.list();
-        return usuarios.isEmpty() ? ResponseEntity.status(204).build():ResponseEntity.status(200).body(usuarios);
+        return usuarios.isEmpty() ? noContent().build(): ok(usuarios);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> findById(@PathVariable Integer id){
-        return ResponseEntity.status(200).body(usuarioService.findById(id));
+        return ok(usuarioService.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<UsuarioResponse> register(@RequestBody UsuarioRequest usuarioRequest){
-        return ResponseEntity.status(200).body(usuarioService.register(usuarioRequest));
+    public ResponseEntity<UsuarioResponse> register(@RequestBody @Valid UsuarioRequest usuarioRequest){
+        return ok(usuarioService.register(usuarioRequest));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioResponse> atualizar(@PathVariable Integer id, @RequestBody UsuarioUpdateRequest usuarioUpdateRequest) {
-        return ResponseEntity.status(200).body(usuarioService.update(id, usuarioUpdateRequest));
+    public ResponseEntity<UsuarioResponse> update(@PathVariable Integer id, @RequestBody @Valid UsuarioUpdateRequest usuarioUpdateRequest) {
+        return ok(usuarioService.update(id, usuarioUpdateRequest));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<UsuarioResponse> atualizarParcial(@PathVariable Integer id, @RequestBody UsuarioUpdateRequest usuarioUpdateRequest){
-        return ResponseEntity.status(200).body(usuarioService.updateNome(id, usuarioUpdateRequest));
+    public ResponseEntity<Usuario> updateNome(@PathVariable Integer id,@RequestBody @Valid Usuario usuario){
+        return ok(usuarioService.updateNome(id,usuario));
     }
 
     //Não usado normalmente é optado por delete lógico
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         usuarioService.delete(id);
-        return ResponseEntity.status(204).build();
+        return noContent().build();
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestParam String email, @RequestParam String senha) {
-        return ResponseEntity.status(200).body(usuarioService.login(email, senha));
+    public ResponseEntity<LoginResponse> login(@RequestParam @Valid String email, @RequestParam String senha) {
+        return ok(usuarioService.login(email, senha));
     }
 }
