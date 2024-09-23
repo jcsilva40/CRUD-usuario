@@ -27,25 +27,16 @@ public class UsuarioService {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public Usuario register(Usuario usuario) {
-        if (usuario.getSenha().length() >= 8 && (
-                usuario.getSenha().contains("!") ||
-                        usuario.getSenha().contains(".") ||
-                        usuario.getSenha().contains("#") ||
-                        usuario.getSenha().contains("*") ||
-                        usuario.getSenha().contains("%") ||
-                        usuario.getSenha().contains("&"))) {
+    public Usuario cadastro(Usuario usuario) {
             usuarioRepository.save(usuario);
             return usuario;
-        }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
     }
 
-    public List<Usuario> list(){
+    public List<Usuario> listar(){
         return usuarioRepository.findAll();
     }
 
-    public Usuario findById(Integer id){
+    public Usuario encontrarPorId(Integer id){
         Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
         if (usuarioOpt.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -53,39 +44,25 @@ public class UsuarioService {
         return usuarioOpt.get();
     }
 
-    public void delete(Integer id){
+    public void deletar(Integer id){
         if (usuarioRepository.findById(id).isEmpty()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
         }
         usuarioRepository.deleteById(id);
     }
 
-    public Usuario update(Integer id, UsuarioUpdateRequest usuarioUpdateRequest){
-        Optional<Usuario> usuarioOpt = Optional.ofNullable(findById(id));
+    public Usuario atualizar(Integer id, Usuario usuario){
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
         if (usuarioOpt.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        if (    usuarioUpdateRequest.senha().length()>=8 &&(
-                usuarioUpdateRequest.senha().contains("!")||
-                usuarioUpdateRequest.senha().contains(".")||
-                usuarioUpdateRequest.senha().contains("#")||
-                usuarioUpdateRequest.senha().contains("*")||
-                usuarioUpdateRequest.senha().contains("%")||
-                usuarioUpdateRequest.senha().contains("&"))) {
-            usuarioOpt.get().setEmail(usuarioUpdateRequest.email());
-            usuarioOpt.get().setSenha(usuarioUpdateRequest.senha());
-            usuarioOpt.get().setNome(usuarioUpdateRequest.nome());
-            usuarioOpt.get().setDataNascimento(usuarioUpdateRequest.dataNascimento());
+           BeanUtils.copyProperties(usuario,usuarioOpt);
             usuarioRepository.save(usuarioOpt.get());
             return usuarioOpt.get();
-        }
-
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-
     }
 
-    public Usuario updateNome(Integer id, String nome){
-        Optional<Usuario> buscaUsuario = Optional.ofNullable(findById(id));
+    public Usuario atualizarNome(Integer id, String nome){
+        Optional<Usuario> buscaUsuario = usuarioRepository.findById(id);
         if (buscaUsuario.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
@@ -93,11 +70,8 @@ public class UsuarioService {
         return usuarioRepository.save(buscaUsuario.get());
     }
 
-
     public Usuario login(String email, String senha) {
-
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmailAndSenha(email, senha);
-
         if (usuarioOpt.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }

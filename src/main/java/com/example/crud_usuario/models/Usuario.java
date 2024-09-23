@@ -15,18 +15,9 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @NotBlank
-    @Email
     private String email;
-
-    @NotBlank
     private String senha;
-
-    @NotBlank
     private String nome;
-
-    @PastOrPresent
     private LocalDate dataNascimento;
 
 
