@@ -1,4 +1,4 @@
-package com.example.crud_usuario;
+package com.application.crud_usuario;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,21 +1,17 @@
-package com.example.crud_usuario.controllers;
+package com.application.crud_usuario.controllers;
 
-import com.example.crud_usuario.dtos.LoginResponse;
-import com.example.crud_usuario.dtos.UsuarioResponse;
-import com.example.crud_usuario.dtos.UsuarioRequest;
-import com.example.crud_usuario.dtos.UsuarioUpdateRequest;
-import com.example.crud_usuario.models.Usuario;
-import com.example.crud_usuario.services.UsuarioService;
+import com.application.crud_usuario.dtos.LoginResponse;
+import com.application.crud_usuario.dtos.UsuarioResponse;
+import com.application.crud_usuario.dtos.UsuarioRequest;
+import com.application.crud_usuario.models.Usuario;
+import com.application.crud_usuario.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 import static org.springframework.http.ResponseEntity.*;
@@ -30,7 +26,7 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<List<UsuarioResponse>> listar(){
         List<Usuario> usuarios = usuarioService.listar();
-     List<UsuarioResponse> responses = Stream.<UsuarioResponse>builder().build().toList();
+     List<UsuarioResponse> responses = usuarios.stream().map(conversor->new UsuarioResponse(conversor.getId(),conversor.getEmail(),conversor.getNome(),conversor.getDataNascimento())).toList();
       return responses.isEmpty() ? noContent().build() : ok(responses);
     }
 

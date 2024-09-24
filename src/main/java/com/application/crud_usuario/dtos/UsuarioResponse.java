@@ -1,10 +1,8 @@
-package com.example.crud_usuario.dtos;
+package com.application.crud_usuario.dtos;
 
-import com.example.crud_usuario.models.Usuario;
+import com.application.crud_usuario.models.Usuario;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public record UsuarioResponse(
         Integer id,

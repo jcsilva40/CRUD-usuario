@@ -1,19 +1,12 @@
-package com.example.crud_usuario.services;
+package com.application.crud_usuario.services;
 
-import com.example.crud_usuario.dtos.LoginResponse;
-import com.example.crud_usuario.dtos.UsuarioResponse;
-import com.example.crud_usuario.dtos.UsuarioRequest;
-import com.example.crud_usuario.dtos.UsuarioUpdateRequest;
-import com.example.crud_usuario.models.Usuario;
-import com.example.crud_usuario.repositories.UsuarioRepository;
+import com.application.crud_usuario.models.Usuario;
+import com.application.crud_usuario.repositories.UsuarioRepository;
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -56,8 +49,11 @@ public class UsuarioService {
         if (usuarioOpt.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-           BeanUtils.copyProperties(usuario,usuarioOpt);
-            usuarioRepository.save(usuarioOpt.get());
+        usuarioOpt.get().setEmail(usuario.getEmail());
+        usuarioOpt.get().setSenha(usuario.getSenha());
+        usuarioOpt.get().setNome(usuario.getNome());
+        usuarioOpt.get().setDataNascimento(usuario.getDataNascimento());
+        usuarioRepository.save(usuarioOpt.get());
             return usuarioOpt.get();
     }
 

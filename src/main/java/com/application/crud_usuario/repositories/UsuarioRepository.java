@@ -1,6 +1,6 @@
-package com.example.crud_usuario.repositories;
+package com.application.crud_usuario.repositories;
 
-import com.example.crud_usuario.models.Usuario;
+import com.application.crud_usuario.models.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

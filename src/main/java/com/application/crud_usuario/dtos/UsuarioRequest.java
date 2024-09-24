@@ -1,6 +1,6 @@
-package com.example.crud_usuario.dtos;
+package com.application.crud_usuario.dtos;
 
-import com.example.crud_usuario.models.Usuario;
+import com.application.crud_usuario.models.Usuario;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
@@ -9,7 +9,7 @@ public record UsuarioRequest(
          @NotBlank
          @Email
          String email,
-         @Pattern(regexp = "/^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/")
+         @Pattern(regexp = "^(?=.*[A-Z])(?=.*[!#@$%&])(?=.*[0-9])(?=.*[a-z]).{6,15}$")
          @NotBlank
          String senha,
          @Size(min = 3,max = 120)

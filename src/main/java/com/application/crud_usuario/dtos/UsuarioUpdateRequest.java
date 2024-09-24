@@ -1,4 +1,6 @@
-package com.example.crud_usuario.dtos;
+package com.application.crud_usuario.dtos;
+
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 

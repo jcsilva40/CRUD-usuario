@@ -1,6 +1,6 @@
-package com.example.crud_usuario.dtos;
+package com.application.crud_usuario.dtos;
 
-import com.example.crud_usuario.models.Usuario;
+import com.application.crud_usuario.models.Usuario;
 
 public record LoginResponse(
          Integer id,
