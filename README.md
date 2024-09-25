@@ -21,17 +21,14 @@
 - [x] **Configuração do Banco de Dados H2:**  
   Configurar o banco H2 no arquivo `application.properties`: ⚙️
   ```properties
-spring.application.name=CrudUsuarioAplicativo
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
+  spring.application.name=CrudUsuarioAplicativo
+  spring.jpa.show-sql=true
+  spring.jpa.properties.hibernate.format_sql=true
+  spring.h2.console.enabled=true
+  spring.datasource.url=jdbc:h2:mem:banco
 
-# Essas 2 só devem ser usadas caso use o banco H2
-# permite o acesso ao h2 console: localhost:8080/h2-console
-spring.h2.console.enabled=true
-spring.datasource.url=jdbc:h2:mem:banco
-
-server.error.include-message=always
-server.error.include-binding-errors=always
+  server.error.include-message=always
+  server.error.include-binding-errors=always
 
 ---
 
