@@ -1,39 +1,114 @@
-# API CRUD Simples com Spring Boot e H2
+Aqui está o checklist atualizado no padrão de marcação de texto apropriado para um **README.md**:
 
-## Objetivo
+```markdown
+# Checklist do Projeto: API CRUD com Spring Boot e H2 🖥️📦
 
-Este projeto tem como objetivo desenvolver uma API simples utilizando **Spring Boot** que implemente operações CRUD (Create, Read, Update, Delete) para gerenciar um recurso como **Usuários** ou **Produtos**. O banco de dados utilizado será o **H2**, um banco em memória. A API expõe endpoints RESTful e inclui validação básica dos dados de entrada, além de tratamento de erros apropriado.
+## Configuração Inicial
 
----
+- [x] **Criar repositório no GitHub:**  
+  Criar um repositório no GitHub para armazenar o código do projeto. 📁
 
-## Requisitos
-
-1. **Endpoints RESTful** para realizar as operações CRUD no recurso escolhido (exemplo: Usuários ou Produtos).
-2. **Banco de dados em memória H2**: utilizado para armazenar os dados de forma volátil durante a execução da aplicação.
-3. **Validação de dados**: entradas para a API serão validadas para garantir consistência.
-4. **Tratamento de erros**: a API deve tratar erros de forma clara, retornando mensagens e códigos de status adequados.
-5. **Versionamento e Controle de Versão**:
-   - O código será disponibilizado no **GitHub**.
-   - Utilizar **commits semânticos** (ex.: `feat`, `fix`, `refactor`).
-   - Se possível, seguir o fluxo de trabalho **GitFlow** para gerenciar branches e releases.
+- [x] **Configurar Trello:**  
+  Criar um board no Trello para organizar as tarefas do projeto, dividindo em colunas como "To Do", "In Progress", e "Done". 📝
 
 ---
 
-## Tecnologias Utilizadas
+## Estruturação do Projeto
 
-- **Java 17** (ou superior)
-- **Spring Boot** 3.x
-- **Spring Data JPA**
-- **H2 Database**
-- **Maven** (para gerenciamento de dependências)
-- **Git/GitHub** (para controle de versão)
-- **Trello** (para gestão do projeto)
+- [x] **Configuração do Projeto Spring Boot:**  
+  Inicializar um novo projeto Spring Boot no Spring Initializr com as seguintes dependências:
+  - Spring Web 🌐
+  - Spring Data JPA 🗄️
+  - H2 Database 🛢️
+
+- [x] **Configuração do Banco de Dados H2:**  
+  Configurar o banco H2 no arquivo `application.properties`: ⚙️
+  ```properties
+  spring.datasource.url=jdbc:h2:mem:testdb
+  spring.datasource.driverClassName=org.h2.Driver
+  spring.datasource.username=sa
+  spring.datasource.password=
+  spring.h2.console.enabled=true
+  spring.datasource.platform=h2
+  spring.jpa.show-sql=true
+  ```
 
 ---
 
-## Instalação e Configuração
+## Implementação dos Endpoints CRUD
 
-1. **Clone o repositório**:
-   ```bash
-   git clone https://github.com/LukaTamazato/CRUD-usuario.git
-   cd CRUD-usuario
+- [x] **Implementar Endpoint para Criar Usuário (POST):**  
+  Criar o método `POST /usuario` que recebe os dados do usuário, valida, e salva no banco de dados. ➕👤
+
+- [x] **Implementar Endpoint para Buscar Todos os Usuários (GET):**  
+  Criar o método `GET /usuario` que retorna todos os usuários armazenados no banco de dados. 🔍👥
+
+- [x] **Implementar Endpoint para Buscar Usuário por ID (GET):**  
+  Criar o método `GET /usuario/{id}` que retorna um usuário específico pelo seu ID. 🆔👤
+
+- [x] **Implementar Endpoint para Atualizar Usuário (PUT):**  
+  Criar o método `PUT /usuario/{id}` que atualiza as informações de um usuário existente. ♻️👤
+
+- [x] **Implementar Endpoint para Atualizar Parcialmente Usuário (PATCH):**  
+  Criar o método `PATCH /usuario/{id}` que atualiza parcialmente os dados de um usuário. ✏️👤
+
+- [x] **Implementar Endpoint para Deletar Usuário (DELETE):**  
+  Criar o método `DELETE /usuario/{id}` que exclui um usuário do banco de dados. ❌👤
+
+---
+
+## Criação do Modelo de Dados
+
+- [x] **Definir a entidade `Usuario`:**  
+  Criar a classe `Usuario` como uma entidade JPA, utilizando anotações como `@Entity`, `@Id`, e `@GeneratedValue`.
+
+---
+
+## Validações e Tratamento de Erros
+
+- [x] **Validação de Entradas de Dados:**  
+  Implementar validações básicas nos campos obrigatórios (ex.: nome não pode ser vazio) utilizando as anotações do Spring, como `@NotNull`, `@Size`, etc. ✔️📝
+
+- [x] **Tratamento de Erros Globais:**  
+  Configurar uma classe de tratamento de exceções (`@ControllerAdvice`) para retornar respostas apropriadas (ex.: `400 Bad Request`, `404 Not Found`) em caso de erros. ⚠️🚫
+
+---
+
+## Testes e Documentação
+
+- [x] **Testar Endpoints com Postman/Insomnia:**  
+  Testar todos os endpoints usando ferramentas como Postman ou Insomnia, validando que cada operação CRUD funciona corretamente. 🛠️🧪
+
+- [x] **Documentar API no README:**  
+  Documentar os detalhes da API (endpoints, formato dos dados, exemplos de requests/responses) no arquivo `README.md`. 📖📝
+
+---
+
+## Controle de Versão e Organização
+
+- [x] **Commits Semânticos:**  
+  Utilizar convenção de commits semânticos durante todo o desenvolvimento (ex.: `feat`, `fix`, `refactor`). 📝✅
+
+- [x] **Seguir GitFlow (Opcional):**  
+  Implementar o fluxo GitFlow para organizar branches e releases (ex.: criar branches `feature`, `develop`, `main`). 🌿
+
+---
+
+## Gestão do Projeto
+
+- [x] **Definir Prazos no Trello:**  
+  Atribuir prazos e responsáveis para cada tarefa dentro do board no Trello. ⏳
+
+- [x] **Realizar Dailys:**  
+  Participar de dailys para discutir progresso, bloqueios e próximos passos. ☕🗣️
+
+---
+
+## Entrega e Apresentação
+
+- [x] **Publicar Projeto no GitHub:**  
+  Fazer o push final do projeto no GitHub com todos os commits e documentações necessárias. 🚀
+
+- [x] **Preparar Apresentação Final:**  
+  Preparar uma apresentação para mostrar o progresso do projeto, dificuldades enfrentadas e lições aprendidas. 🎤📊
+```
