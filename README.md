@@ -21,35 +21,39 @@
 - [x] **Configuração do Banco de Dados H2:**  
   Configurar o banco H2 no arquivo `application.properties`: ⚙️
   ```properties
-  spring.datasource.url=jdbc:h2:mem:testdb
-  spring.datasource.driverClassName=org.h2.Driver
-  spring.datasource.username=sa
-  spring.datasource.password=
-  spring.h2.console.enabled=true
-  spring.datasource.platform=h2
-  spring.jpa.show-sql=true
+spring.application.name=CrudUsuarioAplicativo
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# Essas 2 só devem ser usadas caso use o banco H2
+# permite o acesso ao h2 console: localhost:8080/h2-console
+spring.h2.console.enabled=true
+spring.datasource.url=jdbc:h2:mem:banco
+
+server.error.include-message=always
+server.error.include-binding-errors=always
 
 ---
 
 ## Implementação dos Endpoints CRUD
 
 - [x] **Implementar Endpoint para Criar Usuário (POST):**  
-  Criar o método `POST /usuario` que recebe os dados do usuário, valida, e salva no banco de dados. ➕👤
+  Criar o método `POST /usuarios` que recebe os dados do usuário, valida, e salva no banco de dados. ➕👤
 
 - [x] **Implementar Endpoint para Buscar Todos os Usuários (GET):**  
-  Criar o método `GET /usuario` que retorna todos os usuários armazenados no banco de dados. 🔍👥
+  Criar o método `GET /usuarios` que retorna todos os usuários armazenados no banco de dados. 🔍👥
 
 - [x] **Implementar Endpoint para Buscar Usuário por ID (GET):**  
-  Criar o método `GET /usuario/{id}` que retorna um usuário específico pelo seu ID. 🆔👤
+  Criar o método `GET /usuarios/{id}` que retorna um usuário específico pelo seu ID. 🆔👤
 
 - [x] **Implementar Endpoint para Atualizar Usuário (PUT):**  
-  Criar o método `PUT /usuario/{id}` que atualiza as informações de um usuário existente. ♻️👤
+  Criar o método `PUT /usuarios/{id}` que atualiza as informações de um usuário existente. ♻️👤
 
 - [x] **Implementar Endpoint para Atualizar Parcialmente Usuário (PATCH):**  
-  Criar o método `PATCH /usuario/{id}` que atualiza parcialmente os dados de um usuário. ✏️👤
+  Criar o método `PATCH /usuarios/{id}` que atualiza parcialmente os dados de um usuário. ✏️👤
 
 - [x] **Implementar Endpoint para Deletar Usuário (DELETE):**  
-  Criar o método `DELETE /usuario/{id}` que exclui um usuário do banco de dados. ❌👤
+  Criar o método `DELETE /usuarios/{id}` que exclui um usuário do banco de dados. ❌👤
 
 ---
 
