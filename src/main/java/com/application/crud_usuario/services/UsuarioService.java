@@ -6,8 +6,11 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +24,9 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public Usuario cadastro(Usuario usuario) {
+        verificarEmail(usuario.getEmail());
+        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
+        usuario.setSenha(senhaCriptografada);
             usuarioRepository.save(usuario);
             return usuario;
     }
@@ -29,48 +35,50 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Usuario encontrarPorId(Integer id){
+    public Optional<Usuario> buscaUsuario(Integer id){
         Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
         if (usuarioOpt.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        return usuarioOpt.get();
+        return usuarioOpt;
     }
-
     public void deletar(Integer id){
-        if (usuarioRepository.findById(id).isEmpty()){
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
-        }
+        buscaUsuario(id);
         usuarioRepository.deleteById(id);
     }
 
     public Usuario atualizar(Integer id, Usuario usuario){
-        Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
-        if (usuarioOpt.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        usuarioOpt.get().setEmail(usuario.getEmail());
-        usuarioOpt.get().setSenha(usuario.getSenha());
-        usuarioOpt.get().setNome(usuario.getNome());
-        usuarioOpt.get().setDataNascimento(usuario.getDataNascimento());
-        usuarioRepository.save(usuarioOpt.get());
-            return usuarioOpt.get();
+        verificarEmail(usuario.getEmail());
+        Usuario user = new Usuario(buscaUsuario(id));
+        usuarioRepository.save(user);
+        return user;
     }
 
     public Usuario atualizarNome(Integer id, String nome){
         Optional<Usuario> buscaUsuario = usuarioRepository.findById(id);
-        if (buscaUsuario.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        buscaUsuario(id);
         buscaUsuario.get().setNome(nome);
         return usuarioRepository.save(buscaUsuario.get());
     }
 
     public Usuario login(String email, String senha) {
-        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmailAndSenha(email, senha);
+        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
         if (usuarioOpt.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
-        return usuarioOpt.get();
+        boolean senhaCripto = new BCryptPasswordEncoder().matches(senha,usuarioOpt.get().getSenha());
+        if (senhaCripto){
+            return usuarioOpt.get();
+        }
+        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
     }
+    public boolean verificarEmail(String email){
+        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
+        if (usuarioOpt.isEmpty()){
+            return false;
+        }
+        throw new ResponseStatusException(HttpStatus.CONFLICT);
+    }
+
+
 }

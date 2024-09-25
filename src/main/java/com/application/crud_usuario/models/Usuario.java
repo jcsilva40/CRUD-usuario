@@ -8,6 +8,7 @@ import jakarta.validation.constraints.*;
 import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Entity
 public class Usuario {
@@ -20,8 +21,16 @@ public class Usuario {
     private String nome;
     private LocalDate dataNascimento;
 
+    public Usuario() {
+    }
 
-
+    public Usuario(Optional<Usuario> usuarioNovo) {
+        this.id = usuarioNovo.get().getId();
+        this.email = usuarioNovo.get().getEmail();
+        this.senha = usuarioNovo.get().getSenha();
+        this.nome = usuarioNovo.get().getNome();
+        this.dataNascimento = usuarioNovo.get().getDataNascimento();
+    }
 
     public Integer getId() {
         return id;
