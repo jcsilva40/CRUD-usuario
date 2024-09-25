@@ -1,6 +1,3 @@
-Aqui está o checklist atualizado no padrão de marcação de texto apropriado para um **README.md**:
-
-```markdown
 # Checklist do Projeto: API CRUD com Spring Boot e H2 🖥️📦
 
 ## Configuração Inicial
@@ -31,7 +28,6 @@ Aqui está o checklist atualizado no padrão de marcação de texto apropriado p
   spring.h2.console.enabled=true
   spring.datasource.platform=h2
   spring.jpa.show-sql=true
-  ```
 
 ---
 
