@@ -24,12 +24,12 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Optional<Usuario> usuarioNovo) {
-        this.id = usuarioNovo.get().getId();
-        this.email = usuarioNovo.get().getEmail();
-        this.senha = usuarioNovo.get().getSenha();
-        this.nome = usuarioNovo.get().getNome();
-        this.dataNascimento = usuarioNovo.get().getDataNascimento();
+    public Usuario (Usuario usuarioNovo) {
+        this.id = usuarioNovo.getId();
+        this.email = usuarioNovo.getEmail();
+        this.senha = usuarioNovo.getSenha();
+        this.nome = usuarioNovo.getNome();
+        this.dataNascimento = usuarioNovo.getDataNascimento();
     }
 
     public Integer getId() {

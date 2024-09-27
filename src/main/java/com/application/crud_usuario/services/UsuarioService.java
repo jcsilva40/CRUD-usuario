@@ -24,9 +24,9 @@ public class UsuarioService {
     private UsuarioRepository usuarioRepository;
 
     public Usuario cadastro(Usuario usuario) {
-        verificarEmail(usuario.getEmail());
-        String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
-        usuario.setSenha(senhaCriptografada);
+            verificarEmail(usuario.getEmail());
+            String senhaCriptografada = new BCryptPasswordEncoder().encode(usuario.getSenha());
+            usuario.setSenha(senhaCriptografada);
             usuarioRepository.save(usuario);
             return usuario;
     }
@@ -49,7 +49,10 @@ public class UsuarioService {
 
     public Usuario atualizar(Integer id, Usuario usuario){
         verificarEmail(usuario.getEmail());
-        Usuario user = new Usuario(buscaUsuario(id));
+        Usuario user = new Usuario(buscaUsuario(id).get());
+        usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
+        BeanUtils.copyProperties(usuario,user);
+        user.setId(id);
         usuarioRepository.save(user);
         return user;
     }
@@ -66,12 +69,13 @@ public class UsuarioService {
         if (usuarioOpt.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
         }
-        boolean senhaCripto = new BCryptPasswordEncoder().matches(senha,usuarioOpt.get().getSenha());
-        if (senhaCripto){
+        if (new BCryptPasswordEncoder().matches(senha,usuarioOpt.get().getSenha())){
             return usuarioOpt.get();
         }
         throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+
     }
+
     public boolean verificarEmail(String email){
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
         if (usuarioOpt.isEmpty()){
