@@ -58,8 +58,8 @@ public class UsuarioService {
         verificarEmail(usuario.getEmail());
         Usuario usuarioNovo = buscaUsuario(id);
         usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-        CustomBeanUtils.copyNonNullProperties(usuario,usuarioNovo);
         if (usuarioNovo.getEmail().equals(usuario.getEmail()))usuarioNovo.setEmail(null);
+        CustomBeanUtils.copyNonNullProperties(usuario,usuarioNovo);
         usuarioNovo.setId(id);
         usuarioRepository.save(usuarioNovo);
         return usuarioNovo;
@@ -72,12 +72,12 @@ public class UsuarioService {
         return usuarioRepository.save(buscaUsuario.get());
     }
 
-    public Usuario login(String email, String senha) {
-        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
+    public Usuario login(Usuario usuario) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(usuario.getEmail());
         if (usuarioOpt.isEmpty()) {
             throw new NaoAutorizadoException();
         }
-        if (new BCryptPasswordEncoder().matches(senha,usuarioOpt.get().getSenha())){
+        if (new BCryptPasswordEncoder().matches(usuario.getSenha(),usuarioOpt.get().getSenha())){
             return usuarioOpt.get();
         }
         throw new NaoAutorizadoException();

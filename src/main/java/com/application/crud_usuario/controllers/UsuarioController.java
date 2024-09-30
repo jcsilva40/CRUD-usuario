@@ -1,8 +1,6 @@
 package com.application.crud_usuario.controllers;
 
-import com.application.crud_usuario.dtos.LoginResponse;
-import com.application.crud_usuario.dtos.UsuarioResponse;
-import com.application.crud_usuario.dtos.UsuarioRequest;
+import com.application.crud_usuario.dtos.*;
 import com.application.crud_usuario.mapper.UsuarioMapper;
 import com.application.crud_usuario.models.Usuario;
 import com.application.crud_usuario.services.UsuarioService;
@@ -26,7 +24,7 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<List<UsuarioResponse>> listar(){
         List<Usuario> usuarios = usuarioService.listar();
-     List<UsuarioResponse> responses = usuarios.stream().map(conversor->new UsuarioResponse(conversor.getId(),conversor.getEmail(),conversor.getNome(),conversor.getDataNascimento())).toList();
+     List<UsuarioResponse> responses = usuarios.stream().map(UsuarioMapper::usuarioToUsuarioResponse).toList();
       return responses.isEmpty() ? noContent().build() : ok(responses);
     }
 
@@ -45,8 +43,8 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UsuarioResponse> atualiza(@PathVariable Integer id, @RequestBody @Valid Usuario usuario) {
-        return ok(UsuarioMapper.usuarioToUsuarioResponse(usuarioService.atualizar(id, usuario)));
+    public ResponseEntity<UsuarioResponse> atualiza(@PathVariable Integer id, @RequestBody @Valid UsuarioUpdateRequest usuarioUpdateRequest) {
+        return ok(UsuarioMapper.usuarioToUsuarioResponse(usuarioService.atualizar(id,UsuarioMapper.usarioUpadateRequestToUsuario(usuarioUpdateRequest))));
     }
 
     @PatchMapping("/{id}")
@@ -62,7 +60,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestParam @Valid String email, @RequestParam String senha) {
-        return ok(UsuarioMapper.usuarioToLoginResponse(usuarioService.login(email, senha)));
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest) {
+        return ok(UsuarioMapper.usuarioToLoginResponse(usuarioService.login(UsuarioMapper.loginRequestTousuario(loginRequest))));
     }
 }

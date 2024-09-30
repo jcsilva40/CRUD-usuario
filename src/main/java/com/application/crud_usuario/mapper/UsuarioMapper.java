@@ -1,9 +1,6 @@
 package com.application.crud_usuario.mapper;
 
-import com.application.crud_usuario.dtos.LoginResponse;
-import com.application.crud_usuario.dtos.UsuarioRequest;
-import com.application.crud_usuario.dtos.UsuarioResponse;
-import com.application.crud_usuario.dtos.UsuarioUpdateRequest;
+import com.application.crud_usuario.dtos.*;
 import com.application.crud_usuario.models.Usuario;
 
 public class UsuarioMapper {
@@ -25,7 +22,7 @@ public class UsuarioMapper {
                 .build();
     }
 
-    public static Usuario usarioUpadateRequest(UsuarioUpdateRequest usuarioUpdateRequest){
+    public static Usuario usarioUpadateRequestToUsuario(UsuarioUpdateRequest usuarioUpdateRequest){
         return Usuario.builder()
                 .email(usuarioUpdateRequest.email())
                 .senha(usuarioUpdateRequest.senha())
@@ -39,6 +36,13 @@ public class UsuarioMapper {
                 .id(usuario.getId())
                 .email(usuario.getEmail())
                 .nome(usuario.getNome())
+                .build();
+    }
+
+    public static Usuario loginRequestTousuario (LoginRequest loginRequest){
+        return Usuario.builder()
+                .email(loginRequest.email())
+                .senha(loginRequest.senha())
                 .build();
     }
 }
