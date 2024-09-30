@@ -1,8 +1,14 @@
 package com.application.crud_usuario.services;
 
+import com.application.crud_usuario.exception.ConflitoException;
+import com.application.crud_usuario.exception.NaoAutorizadoException;
+import com.application.crud_usuario.exception.NaoEncontradaException;
+import com.application.crud_usuario.mapper.UsuarioMapper;
 import com.application.crud_usuario.models.Usuario;
 import com.application.crud_usuario.repositories.UsuarioRepository;
+import com.application.crud_usuario.utils.CustomBeanUtils;
 import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.NotBlank;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,13 +41,14 @@ public class UsuarioService {
         return usuarioRepository.findAll();
     }
 
-    public Optional<Usuario> buscaUsuario(Integer id){
+    public Usuario buscaUsuario(Integer id){
         Optional<Usuario> usuarioOpt = usuarioRepository.findById(id);
         if (usuarioOpt.isEmpty()){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new NaoEncontradaException("usuario");
         }
-        return usuarioOpt;
+        return usuarioOpt.get();
     }
+
     public void deletar(Integer id){
         buscaUsuario(id);
         usuarioRepository.deleteById(id);
@@ -49,12 +56,13 @@ public class UsuarioService {
 
     public Usuario atualizar(Integer id, Usuario usuario){
         verificarEmail(usuario.getEmail());
-        Usuario user = new Usuario(buscaUsuario(id).get());
+        Usuario usuarioNovo = buscaUsuario(id);
         usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-        BeanUtils.copyProperties(usuario,user);
-        user.setId(id);
-        usuarioRepository.save(user);
-        return user;
+        CustomBeanUtils.copyNonNullProperties(usuario,usuarioNovo);
+        if (usuarioNovo.getEmail().equals(usuario.getEmail()))usuarioNovo.setEmail(null);
+        usuarioNovo.setId(id);
+        usuarioRepository.save(usuarioNovo);
+        return usuarioNovo;
     }
 
     public Usuario atualizarNome(Integer id, String nome){
@@ -67,21 +75,21 @@ public class UsuarioService {
     public Usuario login(String email, String senha) {
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
         if (usuarioOpt.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+            throw new NaoAutorizadoException();
         }
         if (new BCryptPasswordEncoder().matches(senha,usuarioOpt.get().getSenha())){
             return usuarioOpt.get();
         }
-        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+        throw new NaoAutorizadoException();
 
     }
 
-    public boolean verificarEmail(String email){
+    private boolean verificarEmail(String email){
         Optional<Usuario> usuarioOpt = usuarioRepository.findByEmail(email);
         if (usuarioOpt.isEmpty()){
             return false;
         }
-        throw new ResponseStatusException(HttpStatus.CONFLICT);
+        throw new ConflitoException("Email");
     }
 
 
