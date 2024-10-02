@@ -34,7 +34,6 @@ public class UsuarioController {
             @ApiResponse(responseCode = "500", description = "Erro interno ao buscar usuarios"),
             @ApiResponse(responseCode = "204", description = "Nenhum usuario cadastrado")
     })
-
     @GetMapping
     public ResponseEntity<List<UsuarioResponse>> listar(){
         List<Usuario> usuarios = usuarioService.listar();
