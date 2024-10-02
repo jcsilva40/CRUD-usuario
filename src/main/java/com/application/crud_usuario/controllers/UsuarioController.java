@@ -45,7 +45,7 @@ public class UsuarioController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",description = "Usuario encontrado com sucesso"),
             @ApiResponse(responseCode = "500", description = "Erro interno ao buscar usuario"),
-            @ApiResponse(responseCode = "404", description = "Usuario não encontrado")
+            @ApiResponse(responseCode = "404", description = "Usuario não existe")
     })
     @GetMapping("/{id}")
     public ResponseEntity<UsuarioResponse> encontraPorId(@PathVariable Integer id){
