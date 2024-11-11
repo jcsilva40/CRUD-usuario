@@ -1,0 +1,2 @@
+INSERT INTO CPGAS_MENU (CPME_CD, CPME_DS, CPME_ICON, CPME_URL, CPME_CD_PAI, CPME_NR_ORDEM)
+    VALUES (SQ_CPME_CD.NEXTVAL, 'Marca do Medidor', '', '/medicao/medidorMarca/list', 20, 3);

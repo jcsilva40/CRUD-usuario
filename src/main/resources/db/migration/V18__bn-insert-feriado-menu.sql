@@ -1,0 +1,1 @@
+CALL insert_cpgas_menu('Feriado', '', '/cadastros/feriados/list', 0, 2);

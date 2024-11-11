@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfParcelamento" pageWidth="510" pageHeight="220" columnWidth="510" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="17a9ffa2-5924-4562-aa7f-74e7a6226734">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="mesAno" class="java.lang.String"/>
+	<field name="vencimento" class="java.lang.String"/>
+	<field name="valor" class="java.lang.String"/>
+	<field name="dataCorte" class="java.lang.String"/>
+	<field name="revisao" class="java.lang.String"/>
+	<field name="notaFiscalFatura" class="java.lang.String"/>
+	<field name="tipo" class="java.lang.String"/>
+	<columnHeader>
+		<band height="55">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="3" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<frame>
+				<reportElement stretchType="RelativeToBandHeight" x="1" y="0" width="229" height="1" uuid="32274e4b-85cf-474f-808f-5b0ec2337742">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<staticText>
+					<reportElement x="0" y="-54" width="229" height="49" uuid="468e17a6-3dad-4a45-a5ca-d9cfc5084c84">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Justified">
+						<font fontName="Serif" size="5" isBold="false"/>
+					</textElement>
+					<text><![CDATA[A COMPAGAS informa que até a data de emissão desta fatura existem débitos vencidos e ainda não pagos, que podem ser consultados no portal Compagas Virtual (virtual.compagas.com.br).
+A não regularização da situação poderá sujeitar na suspensão do fornecimento de gás natural e também na inscrição dos títulos pendentes em órgãos de proteção ao crédito.
+Caso tenha regularizado seu débito até a data do recebimento desta fatura, favor entrar em contato com a nossa Central de Atendimento (3004 3400), para registro desta regularização.]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

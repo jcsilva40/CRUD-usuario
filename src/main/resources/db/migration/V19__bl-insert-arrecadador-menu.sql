@@ -1,0 +1,1 @@
+CALL insert_cpgas_menu('Arrecadador', '', '/cadastros/arrecadador/list', 0, 2);

@@ -1,0 +1,1 @@
+UPDATE CPGAS_MENU set CPME_URL = '/cadastros/feriados' where CPME_DS = 'Feriado';

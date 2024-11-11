@@ -1,0 +1,25 @@
+CREATE SEQUENCE SQ_CPME_CD
+START WITH 1
+INCREMENT BY 1
+NOCACHE
+NOCYCLE;
+
+CREATE TABLE CPGAS_MENU (
+    CPME_CD NUMBER(19,0) PRIMARY KEY,    
+    CPME_DS VARCHAR2(255 CHAR) NOT NULL,    
+    CPME_ICON VARCHAR2(120 CHAR),
+    CPME_URL VARCHAR2(255 CHAR),
+    CPME_NR_ORDEM NUMBER(9,0) NOT NULL,
+    CPME_IN_EXIBIR_SEM_FILHOS NUMBER(1,0) DEFAULT 1,
+    CPME_CD_PAI NUMBER    
+);
+
+-- Comentários para a Tabela
+COMMENT ON TABLE CPGAS_MENU IS 'Tabela de Menu da versão 2';
+
+-- Comentários para as Colunas
+COMMENT ON COLUMN CPGAS_MENU.CPME_CD IS 'Chave primária da tabela';
+COMMENT ON COLUMN CPGAS_MENU.CPME_DS IS 'Descrição que aparece no menu';
+COMMENT ON COLUMN CPGAS_MENU.CPME_ICON IS 'Icone que aparece no menu';
+COMMENT ON COLUMN CPGAS_MENU.CPME_URL IS 'Url para redirecionamento';
+COMMENT ON COLUMN CPGAS_MENU.CPME_CD_PAI IS 'Chave primária da tabela MENU que indica o item de menu superior';

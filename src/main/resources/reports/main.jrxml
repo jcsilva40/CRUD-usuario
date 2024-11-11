@@ -1,0 +1,806 @@
+<!-- Created with Jaspersoft Studio version 7.0.0.final using JasperReports Library version 7.0.0-b478feaa9aab4375eba71de77b4ca138ad2f62aa  -->
+<jasperReport name="nffaturaV02_00" language="java" pageWidth="595" pageHeight="841" whenNoDataType="AllSectionsNoDetail" columnWidth="511" leftMargin="40" rightMargin="44" topMargin="15" bottomMargin="0" uuid="4eedbb89-b4f6-4469-9ab6-f642a1688cf7">
+	<property name="template.engine" value="tabular_template"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="368"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50.0" bold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#CCCCCC" fontName="Times New Roman" fontSize="18.0" bold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14.0" bold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle mode="Opaque" backcolor="#EEEFF0">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<style name="Table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+			<topPen lineWidth="1.0" lineColor="#000000"/>
+			<leftPen lineWidth="1.0" lineColor="#000000"/>
+			<bottomPen lineWidth="1.0" lineColor="#000000"/>
+			<rightPen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#CACED0">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle backcolor="#D8D8D8">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<parameter name="numeroNotaFiscal" class="java.lang.String"/>
+	<parameter name="dtEmissao" class="java.lang.String"/>
+	<parameter name="dtVencimento" class="java.lang.String"/>
+	<parameter name="valorAPagar" class="java.lang.String"/>
+	<parameter name="nomeCliente" class="java.lang.String"/>
+	<parameter name="enderecoCliente" class="java.lang.String"/>
+	<parameter name="bairroCliente" class="java.lang.String"/>
+	<parameter name="cepCliente" class="java.lang.String"/>
+	<parameter name="ufCliente" class="java.lang.String"/>
+	<parameter name="municipioCliente" class="java.lang.String"/>
+	<parameter name="cpjCnpj" class="java.lang.String"/>
+	<parameter name="inscricaoEstadualCliente" class="java.lang.String"/>
+	<parameter name="segmento" class="java.lang.String"/>
+	<parameter name="tarifa" class="java.lang.String"/>
+	<parameter name="numeroContratoFmt" class="java.lang.String"/>
+	<parameter name="periodoConsumo" class="java.lang.String"/>
+	<parameter name="totalAPagar" class="java.lang.String"/>
+	<parameter name="nomeClienteBoleto" class="java.lang.String"/>
+	<parameter name="codigoBarra" class="java.lang.String"/>
+	<parameter name="valorTotalBoleto" class="java.lang.String"/>
+	<parameter name="numeroCodigo" class="java.lang.String"/>
+	<parameter name="dataVencimento" class="java.lang.String"/>
+	<parameter name="dataDocumento" class="java.lang.String"/>
+	<parameter name="nossoNumero" class="java.lang.String"/>
+	<parameter name="agenciaCodigo" class="java.lang.String"/>
+	<parameter name="carteira" class="java.lang.String"/>
+	<parameter name="beneficiario" class="java.lang.String">
+		<defaultValueExpression><![CDATA["COMPANHIA PARANAENSE DE GÁS - COMPAGAS - CNPJ 00.535.681/0001-92"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="numeroBanco" class="java.lang.String"/>
+	<parameter name="especieTitulo" class="java.lang.String"/>
+	<parameter name="especieMoeda" class="java.lang.String">
+		<defaultValueExpression><![CDATA["R$"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="nomeBanco" class="java.lang.String"/>
+	<parameter name="descontosAbatimentos" class="java.lang.String"/>
+	<parameter name="outraDeducoes" class="java.lang.String"/>
+	<parameter name="moraMulta" class="java.lang.String"/>
+	<parameter name="outrosAcrescimos" class="java.lang.String"/>
+	<parameter name="indicadorBoleto" class="java.lang.Boolean"/>
+	<parameter name="indicadorDebitoAutomatico" class="java.lang.Boolean"/>
+	<parameter name="codigoDebitoAutomatico" class="java.lang.String"/>
+	<parameter name="cedente" class="java.lang.String"/>
+	<parameter name="codigoCliente" class="java.lang.String"/>
+	<parameter name="totalAPagarCobranca" class="java.lang.String"/>
+	<parameter name="colecaoFornecimento" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="colecaoProduto" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="colecaoHistoricoConsumo" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="colecaoTributo" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="colecaoMensagem" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="colecaoFaturaVencida" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="chaveAcesso" class="java.lang.String"/>
+	<parameter name="numeroSerie" class="java.lang.String"/>
+	<parameter name="numeroProtocolo" class="java.lang.String"/>
+	<parameter name="nomePontoConsumo" class="java.lang.String"/>
+	<parameter name="logradouroPontoConsumo" class="java.lang.String"/>
+	<parameter name="municipioPontoConsumo" class="java.lang.String"/>
+	<parameter name="ufPontoConsumo" class="java.lang.String"/>
+	<parameter name="cepPontoConsumo" class="java.lang.String"/>
+	<parameter name="contratoComMaisPontoConsumo" class="java.lang.Boolean"/>
+	<parameter name="enderecoClienteReport" class="java.lang.String"/>
+	<parameter name="totalProdutos" class="java.lang.String"/>
+	<parameter name="totalDesconto" class="java.lang.String"/>
+	<parameter name="mensagemCampanha" class="java.lang.String"/>
+	<detail>
+		<band height="519">
+			<element kind="rectangle" uuid="000d9725-ec6c-4fc4-99dc-fc4e394a79b9" mode="Opaque" x="0" y="423" width="261" height="68" backcolor="#F0F0F0" radius="10">
+				<pen lineWidth="0.05"/>
+			</element>
+			<element kind="rectangle" uuid="33564b95-13fc-4b2d-bcd3-daf20873a0ef" key="" mode="Opaque" x="0" y="156" width="260" height="265" backcolor="#F0F0F0" radius="15">
+				<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.05" lineColor="#030303"/>
+			</element>
+			<element kind="rectangle" uuid="1194411a-ebac-4321-95a7-a2aabe64e066" x="0" y="61" width="260" height="84" backcolor="#F0F0F0" radius="15">
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<pen lineWidth="0.05"/>
+			</element>
+			<element kind="rectangle" uuid="e6af5783-c90f-4878-b804-e6080b4a093c" x="267" y="156" width="240" height="104" backcolor="#F0F0F0" radius="15">
+				<pen lineWidth="0.05"/>
+			</element>
+			<element kind="staticText" uuid="8e2a4bfc-d4b5-4895-8ca1-c53e964e0aab" x="0" y="156" width="260" height="12" fontSize="8.0" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Produtos e Serviços Faturados]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="8cbaaa79-4f9d-41f9-8d5e-ac448e9df2e8" x="267" y="156" width="240" height="12" fontName="SansSerif" fontSize="8.0" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Informações Técnicas]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="rectangle" uuid="9c66a750-4d7c-4bd8-824a-2b693ebaa580" x="267" y="263" width="240" height="130" backcolor="#F0F0F0" radius="15">
+				<pen lineWidth="0.05"/>
+			</element>
+			<element kind="rectangle" uuid="077d5a67-65f9-4c6f-8f5f-d0f3bb1a5545" stretchType="ElementGroupHeight" x="267" y="430" width="240" height="60" backcolor="#F0F0F0" radius="6">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<pen lineWidth="0.05"/>
+			</element>
+			<element kind="rectangle" uuid="1f7ef5ea-b959-478c-b7e6-4e1c0e715666" x="268" y="396" width="239" height="31" backcolor="#F0F0F0" radius="10">
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.05"/>
+			</element>
+			<element kind="staticText" uuid="2c4e7aa3-ecc8-402c-ba7d-0eb8478cd03b" x="267" y="265" width="240" height="12" fontName="SansSerif" fontSize="8.0" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Histórico de Consumo e Pagamentos]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="31f2c2f2-d1f1-4e28-80aa-73e1ce56c8f0" x="286" y="13" width="143" height="13" fontName="Arial" fontSize="7.0" hTextAlign="Center">
+				<text><![CDATA[CURITIBA E REGIÃO METROPOLITANA]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="65c0dc3d-712d-4e16-b824-6f1232e44333" x="286" y="26" width="143" height="13" bold="true" hTextAlign="Center">
+				<text><![CDATA[0800  643 8383]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="9177132e-dc62-4199-b93c-0ba42018b737" x="11" y="67" width="245" height="16" fontSize="9.0" bold="false" vTextAlign="Middle">
+				<expression><![CDATA[$P{nomeCliente}]]></expression>
+			</element>
+			<element kind="staticText" uuid="a200d64a-9cd1-4713-8c13-c05481a039ad" x="348" y="61" width="80" height="14" hTextAlign="Center">
+				<text><![CDATA[Vencimento]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="ea58b341-043d-4759-8b3b-b3264a93d40c" x="428" y="61" width="83" height="14" hTextAlign="Right">
+				<text><![CDATA[Valor (R$)]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="b0dd0765-06f2-404e-b4e3-727c1be6aabb" key="" x="348" y="75" width="80" height="22" fontName="SansSerif" fontSize="12.0" pattern="dd/MM/yyyy" blankWhenNull="true" bold="true" hTextAlign="Center">
+				<expression><![CDATA[$P{dtVencimento}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="9fea15f8-738d-4282-87e7-cd0ebd48c6ac" x="286" y="0" width="143" height="13" bold="true" hTextAlign="Center">
+				<text><![CDATA[3004 3400]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="5a936dac-1669-41aa-b1bf-3ea6e4c3cbed" x="428" y="75" width="83" height="22" fontName="SansSerif" fontSize="10.0" pattern="#,##0.00#" blankWhenNull="true" bold="true" hTextAlign="Right">
+				<expression><![CDATA[$P{valorAPagar}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="da434591-be96-441e-a773-fd6a8f1b1d10" x="270" y="171" width="64" height="12" fontName="SansSerif" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[período de consumo:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="e8654e40-0214-44ef-97ee-049bf1b0a2ee" x="334" y="171" width="100" height="12" fontSize="6.0" vTextAlign="Middle">
+				<expression><![CDATA[$P{periodoConsumo}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="954b05ef-880f-476a-8b6d-c872ee288ded" x="11" y="83" width="245" height="14" fontSize="8.0" vTextAlign="Middle">
+				<expression><![CDATA[$P{enderecoClienteReport}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="fa2d3269-3a9c-4ba3-a975-184849e5d627" x="11" y="97" width="103" height="14" fontSize="8.0" blankWhenNull="true" vTextAlign="Middle">
+				<expression><![CDATA[$P{bairroCliente}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="3cd99718-090e-459f-9cd4-8bf52530735a" x="11" y="111" width="193" height="14" fontSize="8.0" vTextAlign="Middle">
+				<expression><![CDATA[$P{cepCliente} + "  " + $P{municipioCliente} + "  " +  $P{ufCliente}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="ab583d4f-451e-48b5-8783-885dda708ebf" x="268" y="61" width="80" height="14">
+				<text><![CDATA[Emissão]]></text>
+			</element>
+			<element kind="textField" uuid="9413958b-2be2-4076-9a9f-fa28adca35a9" key="" x="268" y="75" width="80" height="22" fontSize="12.0" pattern="dd/MM/yyyy" blankWhenNull="true" bold="false">
+				<expression><![CDATA[$P{dtEmissao}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="image" uuid="74186d95-e8a2-4df6-b226-227bf68779c5" x="0" y="0" width="124" height="59" linkType="None" linkTarget="Self">
+				<expression><![CDATA["logo.png"]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="subreport" uuid="0bbacfe7-f12f-4d4d-8055-9e85e76891f6" stretchType="ContainerHeight" x="-1" y="171" width="257" height="249">
+				<dataSourceExpression><![CDATA[$P{colecaoProduto}]]></dataSourceExpression>
+				<expression><![CDATA["nfproduto.jasper"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<parameter name="totalAPagar">
+					<expression><![CDATA[$P{totalAPagar}]]></expression>
+				</parameter>
+				<parameter name="totalDesconto">
+					<expression><![CDATA[$P{totalDesconto}]]></expression>
+				</parameter>
+				<parameter name="totalProdutos">
+					<expression><![CDATA[$P{totalProdutos}]]></expression>
+				</parameter>
+			</element>
+			<element kind="textField" uuid="3235e469-3a2b-4f43-bc1f-a1fd578dcc91" x="429" y="26" width="91" height="26" fontSize="14.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$P{numeroNotaFiscal}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="subreport" uuid="e0d9b97e-cc29-420e-95b1-4e8761c5e288" x="267" y="183" width="200" height="69">
+				<dataSourceExpression><![CDATA[$P{colecaoFornecimento}]]></dataSourceExpression>
+				<expression><![CDATA["nfinfotecnica.jasper"]]></expression>
+			</element>
+			<element kind="subreport" uuid="aa1c477e-4899-4819-87fb-b5b0513e37f1" x="-2" y="423" width="255" height="29">
+				<dataSourceExpression><![CDATA[$P{colecaoTributo}]]></dataSourceExpression>
+				<expression><![CDATA["nfimposto.jasper"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="subreport" uuid="75711a89-6ef1-409a-a558-5c056efdf690" x="267" y="277" width="200" height="79">
+				<printWhenExpression><![CDATA[$P{colecaoHistoricoConsumo} != null]]></printWhenExpression>
+				<dataSourceExpression><![CDATA[$P{colecaoHistoricoConsumo}]]></dataSourceExpression>
+				<expression><![CDATA["nfhistorico.jasper"]]></expression>
+			</element>
+			<element kind="staticText" uuid="af6f818b-77a3-468c-8da5-307fa5957065" x="429" y="13" width="91" height="13" hTextAlign="Center" vTextAlign="Middle">
+				<text><![CDATA[Fatura de Gás]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="93066781-cf8b-4476-a260-6d5ea725361f" x="11" y="125" width="112" height="14" fontSize="8.0" blankWhenNull="true" vTextAlign="Middle">
+				<expression><![CDATA[$P{cpjCnpj}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="ed25d5cc-203f-46b0-9001-b9d8ec101179" x="124" y="125" width="132" height="14" fontSize="8.0" blankWhenNull="true" vTextAlign="Middle">
+				<expression><![CDATA[$P{inscricaoEstadualCliente}]]></expression>
+			</element>
+			<element kind="staticText" uuid="73ce09ba-a4d3-4299-a7d9-782245a24378" x="268" y="101" width="82" height="14" fontSize="8.0">
+				<text><![CDATA[segmento]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="textField" uuid="e70b497b-8f07-4c44-ba23-fcd030f705fb" x="268" y="115" width="82" height="15" fontSize="8.0" pattern="">
+				<expression><![CDATA[$P{segmento}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="181bf380-f831-4db1-afdb-005c2904a0da" x="441" y="101" width="70" height="14" fontSize="8.0" hTextAlign="Right">
+				<text><![CDATA[identificação]]></text>
+			</element>
+			<element kind="textField" uuid="e9401879-0165-49b1-9a41-ceb6f0256971" x="441" y="115" width="70" height="15" fontSize="8.0" pattern="" bold="true" hTextAlign="Right">
+				<expression><![CDATA[$P{numeroContratoFmt}]]></expression>
+			</element>
+			<element kind="staticText" uuid="8b8243c2-f2f9-4ae1-ace5-7d8bf1ac3fc1" x="125" y="13" width="160" height="13" fontSize="7.0" vTextAlign="Middle">
+				<text><![CDATA[Companhia Paranaense de Gás - COMPAGAS]]></text>
+			</element>
+			<element kind="staticText" uuid="dc81d3d3-4ada-4391-b72e-357219be56ab" x="125" y="26" width="132" height="9" fontSize="5.0">
+				<text><![CDATA[CNPJ 00.535.681.0001-92   IE 10.005.272.50]]></text>
+			</element>
+			<element kind="staticText" uuid="2427bedc-af68-422a-a791-d456526ea04f" x="125" y="35" width="146" height="16" fontSize="5.0">
+				<text><![CDATA[Av João Gualberto 1000, 10o. andar Alto da Glória, Curitiba -  PR CEP 80.030-000]]></text>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="773609db-7d46-4491-ad5b-5719bbd82420" x="125" y="51" width="146" height="7" fontName="DejaVu Sans" fontSize="6.0" hTextAlign="Left" vTextAlign="Middle">
+				<text><![CDATA[www.compagas.com.br]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="f9636e58-fd9e-4605-bde1-ccc74b69dc1e" x="351" y="101" width="90" height="14" fontSize="8.0">
+				<text><![CDATA[tarifa]]></text>
+			</element>
+			<element kind="textField" uuid="126fc39c-6cb8-4f8c-b115-5620458f1910" x="351" y="115" width="90" height="15" fontSize="8.0" pattern="">
+				<expression><![CDATA[$P{tarifa}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+			</element>
+			<element kind="staticText" uuid="3fb8821e-2330-4c9c-8a15-fc550f167e4c" x="286" y="39" width="143" height="13" fontName="Arial" fontSize="7.0" hTextAlign="Center">
+				<paragraph lineSpacing="Single"/>
+				<text><![CDATA[EMERGÊNCIAS E DEMAIS LOCALIDADES]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			</element>
+			<element kind="subreport" uuid="05e1e1bb-584d-448a-8c46-8a1d9a8ba41f" x="2" y="456" width="256" height="14">
+				<dataSourceExpression><![CDATA[$P{colecaoMensagem}]]></dataSourceExpression>
+				<expression><![CDATA["nfmensagem.jasper"]]></expression>
+			</element>
+			<element kind="staticText" uuid="2c903a4b-fa0e-4be3-b164-bb510c2dd262" x="268" y="130" width="44" height="12" fontSize="8.0">
+				<text><![CDATA[Chave NFE:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="36f6b95a-1f71-4c8d-919e-d8790c3b298c" x="268" y="144" width="36" height="12" fontSize="8.0">
+				<text><![CDATA[Número:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="4e4a721a-b0bd-4e44-8d24-40daf0fce56b" x="379" y="144" width="26" height="12" fontSize="8.0">
+				<text><![CDATA[Série:]]></text>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+			</element>
+			<element kind="staticText" uuid="efc48929-13b5-45f7-ad39-f64c7a85c410" x="271" y="399" width="233" height="28" fontName="Serif" fontSize="5.0" hTextAlign="Justified">
+				<text><![CDATA[As informações sobre as Condições Gerais de Fornecimento, disciplinadas pelo Decreto Estadual 6.052/2006, estão disponíveis no sítio da COMPAGAS em http://transparencia.compagas.com.br/pt/acesso-informacao/listar-legislacao/]]></text>
+			</element>
+			<element kind="textField" uuid="62d7f483-9b17-43d9-bf6f-f4b65f9781ee" x="313" y="130" width="207" height="12" fontSize="7.0" textAdjust="StretchHeight" blankWhenNull="true" vTextAlign="Justified">
+				<paragraph lineSpacing="Single"/>
+				<expression><![CDATA[$P{chaveAcesso}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="61641dc3-f510-4518-90eb-1e9f8b3d36a1" x="405" y="144" width="44" height="12" fontSize="8.0" blankWhenNull="true">
+				<expression><![CDATA[$P{numeroSerie}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="a2b7439d-7c59-45cf-8c49-357dd5eefe0d" x="305" y="144" width="50" height="12" fontSize="8.0" blankWhenNull="true">
+				<expression><![CDATA[$P{numeroProtocolo}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="rectangle" uuid="0b1d06a2-ac5a-4462-b226-29a0c43c0e2e" key="" stretchType="ElementGroupHeight" x="0" y="493" width="509" height="25" backcolor="#F0F0F0" radius="10">
+				<printWhenExpression><![CDATA[$P{contratoComMaisPontoConsumo}]]></printWhenExpression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<pen lineWidth="0.05"/>
+			</element>
+			<element kind="textField" uuid="cd4d49fa-4012-4e56-a2cf-fc2dadb61fde" stretchType="ElementGroupBottom" x="11" y="505" width="480" height="9" fontSize="7.0" vTextAlign="Middle">
+				<printWhenExpression><![CDATA[$P{contratoComMaisPontoConsumo}]]></printWhenExpression>
+				<expression><![CDATA[$P{logradouroPontoConsumo} + "  " + "-" + "  " + $P{municipioPontoConsumo} + " ," + " " +  $P{ufPontoConsumo} + "  " + "-" + "  " + "CEP" + " " + $P{cepPontoConsumo}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			</element>
+			<element kind="textField" uuid="96999bc7-d1f3-462e-889f-ff48c6a56af7" x="11" y="494" width="480" height="11" fontSize="8.0" vTextAlign="Middle">
+				<printWhenExpression><![CDATA[$P{contratoComMaisPontoConsumo}]]></printWhenExpression>
+				<expression><![CDATA[$P{nomePontoConsumo}]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				<property name="com.jaspersoft.studio.unit.x" value="px"/>
+			</element>
+			<element kind="subreport" uuid="0c7c5479-0a0b-4bf8-a917-1dfb1afdcb87" stretchType="ContainerHeight" x="270" y="432" width="234" height="58" printRepeatedValues="false">
+				<printWhenExpression><![CDATA[$P{colecaoFaturaVencida} != null]]></printWhenExpression>
+				<dataSourceExpression><![CDATA[$P{colecaoFaturaVencida}]]></dataSourceExpression>
+				<expression><![CDATA["nfParcelamento.jasper"]]></expression>
+				<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<element kind="textField" uuid="588d7385-f95e-4adb-b493-1706ab8e8a32" x="6" y="390" width="241" height="24" fontSize="6.0" blankWhenNull="true" vTextAlign="Bottom">
+				<expression><![CDATA[$P{mensagemCampanha}]]></expression>
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+		<band height="260" splitType="Stretch">
+			<printWhenExpression><![CDATA[$P{indicadorBoleto}]]></printWhenExpression>
+			<element kind="frame" uuid="d69209df-56ce-4fd5-a36f-2d7b874adbe3" stretchType="ContainerBottom" x="1" y="-4" width="510" height="260">
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<element kind="line" uuid="8fe43590-4166-4bb9-b77e-a61c84896264" key="line-1" mode="Opaque" x="102" y="4" width="1" height="17" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="ed0a4915-0381-4346-9560-0fe0d538cfc9" key="line-1" mode="Opaque" x="147" y="3" width="1" height="18" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="22c134b0-7b3f-4eda-869a-7882ad73f1d4" key="line-2" mode="Opaque" x="0" y="40" width="510" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="48e71679-4698-41e5-88e4-863596d9cb92" key="line-2" mode="Opaque" x="0" y="192" width="510" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="502d7489-9f5e-4386-94ed-0ae4e6839594" key="line-3" mode="Opaque" x="375" y="22" width="1" height="170" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="4689e29d-4f16-4a2c-9113-35b46883df12" key="line-2" mode="Opaque" x="0" y="59" width="510" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="cb0f338f-5016-408d-9eb6-6e1f5e0a0fd6" key="line-2" mode="Opaque" x="0" y="78" width="510" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="f5901931-3378-414e-ad6b-e78a4a921b17" key="line-2" mode="Opaque" x="0" y="97" width="510" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="8999a2f7-aac1-4b74-bc85-5b98e2d9e1bf" key="line-4" mode="Opaque" x="91" y="60" width="1" height="37" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="0415e13f-0396-4a6f-8d91-4495e3e27931" key="line-5" mode="Opaque" x="194" y="60" width="1" height="37" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="402a7a86-a515-4c1f-b9d6-a1272db4c992" key="line-6" mode="Opaque" x="279" y="60" width="1" height="37" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="445f2572-0673-4b05-9a12-3c628030e50f" key="line-7" mode="Opaque" x="149" y="79" width="1" height="18" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="888d3b61-efda-4cca-8a91-73276489b08d" key="line-8" mode="Opaque" x="243" y="60" width="1" height="18" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="f8dac3ee-c3e9-4664-af51-1e803577249c" key="line-9" mode="Opaque" x="376" y="116" width="133" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="bf84f0ac-1ba9-4910-b14a-f5923be2212f" key="line-9" mode="Opaque" x="376" y="135" width="133" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="1049b6aa-3791-49d9-8c3f-04db56d50fa9" key="line-9" mode="Opaque" x="376" y="154" width="133" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="ba0e2e8d-037a-49ec-8d37-249f991e7f75" key="line-9" mode="Opaque" x="376" y="173" width="133" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="242802a1-7472-4d42-bfaf-e7b054929f62" key="line-10" mode="Opaque" x="0" y="221" width="510" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="staticText" uuid="14b2ab5a-e134-46a6-ad6d-fccbc28e9d5d" key="staticText" x="326" y="224" width="182" height="15" fontName="SansSerif" fontSize="7.0" hTextAlign="Left">
+					<text><![CDATA[Autenticação Mecânica / FICHA DE COMPENSAÇÃO]]></text>
+				</element>
+				<element kind="line" uuid="9546bf30-bf5e-4dd8-b516-59997a7b3a84" key="line-2" mode="Opaque" x="0" y="21" width="510" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="line" uuid="dce3ae50-d65c-44b5-8cc4-665c5d85f97c" x="0" y="1" width="510" height="1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</element>
+				<element kind="textField" uuid="cdf01ed4-bda3-49e2-b270-fc76e9ad23d5" x="103" y="3" width="42" height="19" fontSize="14.0" hTextAlign="Center" vTextAlign="Top">
+					<expression><![CDATA[$P{numeroBanco}]]></expression>
+				</element>
+				<element kind="textField" uuid="18110e50-61f4-43bb-bb20-2b5559d10f95" x="148" y="5" width="362" height="16" fontName="SansSerif" fontSize="11.0" pattern="" bold="false" hTextAlign="Center">
+					<expression><![CDATA[$P{numeroCodigo}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="16f6a8dd-01ea-491c-80e5-52e6adb57abc" x="1" y="22" width="59" height="7" fontSize="5.0">
+					<text><![CDATA[Local de Pagamento]]></text>
+				</element>
+				<element kind="staticText" uuid="48078d0f-e7ba-4e5d-a733-b9ee156f9b20" x="1" y="41" width="59" height="7" fontSize="5.0">
+					<text><![CDATA[Beneficário]]></text>
+				</element>
+				<element kind="staticText" uuid="930a66b5-ae2a-470c-b11f-21d4d07b2d99" x="1" y="60" width="50" height="7" fontSize="5.0">
+					<text><![CDATA[Data do Documento]]></text>
+				</element>
+				<element kind="staticText" uuid="7e727ce0-37b9-416c-b917-ca5728d414ce" x="1" y="79" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[Uso do Banco]]></text>
+				</element>
+				<element kind="staticText" uuid="c0903b4f-a0f5-4080-967b-0b719aa80256" x="92" y="79" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[Carteira]]></text>
+				</element>
+				<element kind="staticText" uuid="b489f38b-e77c-41a1-b26b-428d740b13fd" x="92" y="60" width="68" height="7" fontSize="5.0">
+					<text><![CDATA[No. do Documento]]></text>
+				</element>
+				<element kind="staticText" uuid="de1e015d-1a31-49b2-a169-a949d8b2234c" x="149" y="79" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[Espécie Moeda]]></text>
+				</element>
+				<element kind="staticText" uuid="55a5d1fb-9fc2-4bcf-a781-7e07e5bba180" x="195" y="79" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[Quantidade]]></text>
+				</element>
+				<element kind="staticText" uuid="6876b510-040a-41c0-9f69-c5aa6c935542" x="195" y="60" width="50" height="7" fontSize="5.0">
+					<text><![CDATA[Espécie Documento]]></text>
+				</element>
+				<element kind="staticText" uuid="1be2b977-cc00-4668-9137-57a6b6c10292" x="246" y="60" width="27" height="7" fontSize="5.0">
+					<text><![CDATA[Aceite]]></text>
+				</element>
+				<element kind="staticText" uuid="393a917a-d19f-4aba-9592-41efcbf5fea4" x="280" y="79" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[Valor]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="decb8bf0-f31c-490b-824d-54c47fb6b5a0" x="280" y="60" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[Data Processamento]]></text>
+				</element>
+				<element kind="staticText" uuid="c449cd4b-190e-4896-83ce-5fe0f7fa4349" x="377" y="22" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[Vencimento]]></text>
+				</element>
+				<element kind="staticText" uuid="41588406-901b-4b68-9232-422864e98982" x="377" y="40" width="100" height="7" fontSize="5.0">
+					<text><![CDATA[Agência/Código Beneficiário]]></text>
+				</element>
+				<element kind="staticText" uuid="1aa6f887-a683-43b1-b2d1-ae274edb0616" x="377" y="60" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[Nosso Número]]></text>
+				</element>
+				<element kind="staticText" uuid="bddb0b54-1c9c-47ee-b7f8-a90c293aaab0" x="377" y="79" width="70" height="7" fontSize="5.0">
+					<text><![CDATA[(=) Valor do Documento]]></text>
+				</element>
+				<element kind="staticText" uuid="8fac56a3-0e50-46e1-b608-2b7658df1cd0" x="377" y="98" width="70" height="7" fontSize="5.0">
+					<text><![CDATA[(-) Desconto/Abatimento]]></text>
+				</element>
+				<element kind="staticText" uuid="2a65b1af-a9b2-43c8-b068-05d2f7f052b6" x="377" y="117" width="70" height="7" fontSize="5.0">
+					<text><![CDATA[(-) Outras Deduções]]></text>
+				</element>
+				<element kind="staticText" uuid="ece01829-790a-4d27-a884-aa33696e5e2e" x="377" y="136" width="70" height="7" fontSize="5.0">
+					<text><![CDATA[(+) Mora/Multa]]></text>
+				</element>
+				<element kind="staticText" uuid="faf8d487-9499-4565-a990-798110fdd8f2" x="377" y="155" width="70" height="7" fontSize="5.0">
+					<text><![CDATA[(+) Outros Acréscimos]]></text>
+				</element>
+				<element kind="staticText" uuid="067d563c-dd56-4123-bf56-45818a762c49" x="377" y="174" width="40" height="7" fontSize="5.0">
+					<text><![CDATA[(=) Valor Cobrado]]></text>
+				</element>
+				<element kind="textField" uuid="d394ad23-2f9b-4f5a-a2a0-90edfff969bd" x="41" y="193" width="252" height="11" fontSize="7.0">
+					<expression><![CDATA[$P{nomeClienteBoleto}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="5ca28645-a86f-42ac-a3bc-dbab9a957e11" x="1" y="193" width="31" height="7" fontSize="5.0">
+					<text><![CDATA[Pagador]]></text>
+				</element>
+				<element kind="staticText" uuid="edbe7650-6064-47e2-b698-9f8ca7979923" x="1" y="204" width="40" height="7" fontSize="5.0" vTextAlign="Bottom">
+					<text><![CDATA[Endereço]]></text>
+				</element>
+				<element kind="staticText" uuid="befab119-473d-41d6-a305-1734a2ac5b06" x="1" y="214" width="40" height="7" fontSize="5.0" vTextAlign="Bottom">
+					<text><![CDATA[Sacador/Avalista]]></text>
+				</element>
+				<element kind="textField" uuid="e0d904ed-efed-4a32-99c8-6e5d4fe6ee0c" x="65" y="42" width="310" height="12" fontSize="8.0">
+					<expression><![CDATA[$P{beneficiario}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="f0a4b010-4575-4866-803c-16d324d2e65f" x="203" y="66" width="35" height="12" fontSize="8.0" blankWhenNull="true">
+					<expression><![CDATA[$P{especieTitulo}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="4fc71c26-e315-4f77-8b19-1857f95edcc7" x="424" y="25" width="83" height="14" hTextAlign="Right">
+					<expression><![CDATA[$P{dataVencimento}]]></expression>
+				</element>
+				<element kind="textField" uuid="1b26db6d-50e2-4282-9740-49a58fe45570" x="32" y="67" width="60" height="11" fontSize="8.0">
+					<expression><![CDATA[$P{dataDocumento}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="c0e45b2f-f479-44da-a3e4-309631b2ef89" x="4" y="5" width="96" height="16" fontSize="8.0" blankWhenNull="true" hTextAlign="Right" vTextAlign="Middle">
+					<expression><![CDATA[$P{nomeBanco}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="379c1133-dc47-4720-87f2-792287146927" x="447" y="82" width="60" height="14" fontSize="8.0" pattern="#,##0.00#" hTextAlign="Right" vTextAlign="Bottom">
+					<expression><![CDATA[$P{valorTotalBoleto}]]></expression>
+				</element>
+				<element kind="textField" uuid="afefeeeb-7afb-4073-979d-519a1f515747" x="417" y="63" width="90" height="14" fontSize="8.0" pattern="#,##0.00#" hTextAlign="Right" vTextAlign="Bottom">
+					<expression><![CDATA[$P{nossoNumero}]]></expression>
+				</element>
+				<element kind="textField" uuid="85627dd2-925d-44c6-80b3-5cb091014648" x="424" y="176" width="82" height="14" fontSize="8.0" pattern="#,##0.00#" hTextAlign="Right" vTextAlign="Bottom">
+					<expression><![CDATA[$P{valorTotalBoleto}]]></expression>
+				</element>
+				<element kind="textField" uuid="16abc72d-479d-4254-a5fb-41170224cac2" x="424" y="44" width="83" height="13" fontSize="8.0" pattern="" hTextAlign="Right" vTextAlign="Bottom">
+					<expression><![CDATA[$P{agenciaCodigo}]]></expression>
+				</element>
+				<element kind="textField" uuid="a9d5e87c-275b-48de-85d5-c810f7eb82fd" x="447" y="101" width="60" height="14" fontSize="8.0" pattern="#,##0.00#" hTextAlign="Right" vTextAlign="Bottom">
+					<expression><![CDATA[$P{descontosAbatimentos}]]></expression>
+				</element>
+				<element kind="textField" uuid="ed1e1c82-d1f1-418a-9ce4-3044f4a646f6" x="447" y="119" width="60" height="14" fontSize="8.0" pattern="#,##0.00#" hTextAlign="Right" vTextAlign="Bottom">
+					<expression><![CDATA[$P{outraDeducoes}]]></expression>
+				</element>
+				<element kind="textField" uuid="64500993-f1cd-4430-b228-4de95c13254b" x="441" y="139" width="66" height="14" fontSize="8.0" pattern="#,##0.00#" hTextAlign="Right" vTextAlign="Bottom">
+					<expression><![CDATA[$P{moraMulta}]]></expression>
+				</element>
+				<element kind="textField" uuid="f384226a-5880-4e22-915c-da94cebd566c" x="441" y="157" width="66" height="14" fontSize="8.0" pattern="#,##0.00#" hTextAlign="Right" vTextAlign="Bottom">
+					<expression><![CDATA[$P{outrosAcrescimos}]]></expression>
+				</element>
+				<element kind="staticText" uuid="fbc67890-8f26-495d-bef2-311886a91fdb" x="1" y="98" width="326" height="7" fontSize="5.0">
+					<text><![CDATA[instruções(Todas as informações deste bloqueto são de exclusiva responsabilidade do beneficiário)]]></text>
+				</element>
+				<element kind="staticText" uuid="0cc68881-f84c-4a5b-9016-d5b17b39cde7" x="6" y="115" width="304" height="18" fontSize="6.0">
+					<text><![CDATA[Ao banco: Não cobrar multa ou mora por atraso de pagamento. Se devidos a COMPAGAS incluirá nas próximas faturas.]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="ccd2fa7c-c7fd-4c29-a570-fdb7b655df3f" x="6" y="135" width="304" height="36" fontSize="6.0">
+					<text><![CDATA[Ao nosso cliente: Realizando o pagamento deste documento após o vencimento via auto-atendimento ou internet, não calcular multa ou mora.  Se devidos, a COMPAGAS incluirá nas próximas faturas.]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="1c16c4ef-0fc9-469e-90d7-63ce1a056c00" x="66" y="22" width="164" height="8" fontSize="6.0">
+					<text><![CDATA[ATÉ O VENCIMENTO PAGUE PREFERENCIALMENTE NO]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="staticText" uuid="1b3e7fa0-1c08-4ea8-bfb3-11ca314def55" x="163" y="85" width="12" height="12" fontSize="8.0">
+					<text><![CDATA[R$]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="c464e1fb-b07c-4d5c-8b50-2ac25ffa358e" x="41" y="204" width="338" height="11" fontSize="7.0">
+					<expression><![CDATA[$P{enderecoCliente}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="a77b1038-ee01-4a28-81e0-82211290e17e" x="253" y="66" width="12" height="12" fontSize="8.0">
+					<text><![CDATA[N]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="04d723a2-95bb-4edf-aebc-7e28963a7090" x="294" y="67" width="60" height="11" fontSize="8.0">
+					<expression><![CDATA[$P{dataDocumento}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="68f3dd0b-7380-4626-b459-6c5206c8ecfe" x="108" y="85" width="32" height="11" fontSize="8.0">
+					<expression><![CDATA[$P{carteira}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="d1d16bf7-f3f5-40f0-b3d2-1a0a6e6367d7" x="8" y="173" width="195" height="8" fontSize="6.0">
+					<text><![CDATA[PARA DÉBITO AUTOMÁTICO INFORME O CÓDIGO (DO USUÁRIO):]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="a3c159ef-39e5-4d80-8194-fa89e9da0a95" x="205" y="173" width="122" height="8" fontSize="6.0">
+					<expression><![CDATA[$P{codigoCliente}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="716a1c44-f57b-4208-8a90-7a28f949a188" x="66" y="30" width="133" height="8" fontSize="6.0">
+					<text><![CDATA[APÓS O VENCIMENTO PAGUE SOMENTE NO]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="textField" uuid="15bb06f0-21c3-4db3-ba83-5ec3e6e8f52b" x="230" y="22" width="64" height="8" fontSize="6.0" blankWhenNull="true" hTextAlign="Left" vTextAlign="Middle">
+					<expression><![CDATA[$P{nomeBanco}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="textField" uuid="78ebf4ea-c969-4732-8e4a-25dddcfd6c5d" x="199" y="30" width="61" height="8" fontSize="6.0" blankWhenNull="true" hTextAlign="Left" vTextAlign="Middle">
+					<expression><![CDATA[$P{nomeBanco}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="staticText" uuid="d7d56634-dfaf-4938-8c0b-e52e59149e67" x="294" y="193" width="23" height="11" fontSize="7.0">
+					<text><![CDATA[CNPJ:]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</element>
+				<element kind="textField" uuid="a9d99b4e-91a6-4bf0-afbe-94e0a033696e" x="317" y="193" width="100" height="11" fontSize="7.0">
+					<expression><![CDATA[$P{cpjCnpj}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+				<element kind="component" uuid="7dc8ca38-e6f5-4494-99a1-55e986c37374" x="9" y="222" width="310" height="36">
+					<printWhenExpression><![CDATA[$P{codigoBarra} != null]]></printWhenExpression>
+					<component kind="barcode4j:Interleaved2Of5" textPosition="none" verticalQuietZone="2.0">
+						<codeExpression><![CDATA[$P{codigoBarra}]]></codeExpression>
+					</component>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</element>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+		<band height="220">
+			<printWhenExpression><![CDATA[($P{indicadorDebitoAutomatico})]]></printWhenExpression>
+			<element kind="frame" uuid="6d29f214-8e52-4da8-ab16-8f200b4bca92" x="0" y="0" width="534" height="120">
+				<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				<element kind="rectangle" uuid="03c962f2-46b7-4d96-ab5f-25dcb9f05722" x="1" y="20" width="510" height="84" backcolor="#FFFFFF" radius="15">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<pen lineWidth="0.05"/>
+				</element>
+				<element kind="staticText" uuid="98619dc6-e251-424d-85dc-cbe1db370dd5" x="19" y="33" width="378" height="11" fontSize="8.0" hTextAlign="Left">
+					<text><![CDATA[Esta nota fiscal/fatura de gás será debitada em sua conta corrente na data do vencimento]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="b059de4d-18a5-40c3-9ced-9f389f6b42ba" x="19" y="44" width="47" height="11" fontSize="8.0" hTextAlign="Left" vTextAlign="Middle">
+					<text><![CDATA[Valor (R$):]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="9134c2cd-efa1-45db-8fe6-8ddc7f5db8b2" x="66" y="44" width="100" height="11" fontSize="8.0" pattern="#,##0.00#" vTextAlign="Middle">
+					<expression><![CDATA[$P{totalAPagarCobranca}]]></expression>
+				</element>
+				<element kind="staticText" uuid="656ed596-615d-4f61-97e5-fc3e4ca0ae26" x="19" y="55" width="47" height="11" fontName="SansSerif" fontSize="8.0" hTextAlign="Left" vTextAlign="Middle">
+					<text><![CDATA[Agencia:]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="cd964405-4efc-4c39-82ab-170d21dc9962" x="66" y="55" width="100" height="11" fontSize="8.0" vTextAlign="Middle">
+					<expression><![CDATA[$P{agenciaCodigo}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="5bf7c92c-c639-4b37-ba06-b3ed1e494db4" x="19" y="67" width="47" height="11" fontName="SansSerif" fontSize="8.0" hTextAlign="Left" vTextAlign="Middle">
+					<text><![CDATA[Banco:]]></text>
+				</element>
+				<element kind="textField" uuid="5a32ceae-5d30-41f2-97ff-8151ce3bc15f" x="66" y="67" width="100" height="11" fontSize="8.0" vTextAlign="Middle">
+					<expression><![CDATA[$P{nomeBanco}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="66fd371a-0d62-4ad6-a5e5-62dfa9de28cc" x="19" y="78" width="223" height="11" fontSize="8.0" hTextAlign="Left">
+					<text><![CDATA[Quitação condicionada ao lançamento no extrato]]></text>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+			</element>
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+		</band>
+		<band height="220">
+			<printWhenExpression><![CDATA[$P{colecaoFaturaVencida} != null & $P{nomeCliente} == null]]></printWhenExpression>
+		</band>
+		<band height="260">
+			<printWhenExpression><![CDATA[!$P{indicadorBoleto} & !$P{indicadorDebitoAutomatico}]]></printWhenExpression>
+			<element kind="frame" uuid="2e3e1c3b-fa30-4c71-a49c-6c6221ed389e" stretchType="ContainerHeight" x="0" y="0" width="510" height="260">
+				<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				<element kind="line" uuid="fc577e6f-a218-4f1d-a910-e2fc142a2589" key="line-2" mode="Opaque" x="221" y="68" width="100" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="staticText" uuid="27435719-b77b-46d4-8a23-4bb2ee1e1f98" key="staticText" x="322" y="61" width="80" height="15" fontName="SansSerif" fontSize="7.0" hTextAlign="Center">
+					<text><![CDATA[Autenticação Mecânica]]></text>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="line" uuid="82979a02-5794-470f-a5e6-f2d2faea60a5" x="0" y="53" width="510" height="1">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</element>
+				<element kind="staticText" uuid="29f270e7-facc-4151-8c54-8f69c091a887" x="15" y="83" width="68" height="9" fontSize="7.0">
+					<text><![CDATA[No. do Documento]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="70d008ac-9034-4381-9da6-1f61071743bf" x="100" y="112" width="60" height="9" fontSize="7.0">
+					<text><![CDATA[Valor a Pagar]]></text>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="f1e7b560-97cf-4de1-a146-3c5142b260d1" x="100" y="83" width="60" height="9" fontSize="7.0">
+					<text><![CDATA[Emissão]]></text>
+				</element>
+				<element kind="staticText" uuid="d49bd425-1c17-489a-b809-9e03373b7c5a" x="15" y="112" width="60" height="9" fontSize="7.0">
+					<text><![CDATA[Vencimento]]></text>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="e07fc1eb-abf4-4de7-b4b3-6b1363b1c476" x="15" y="121" width="83" height="14" fontSize="8.0" hTextAlign="Left">
+					<expression><![CDATA[$P{dataVencimento}]]></expression>
+				</element>
+				<element kind="textField" uuid="9d934ea5-2499-4231-a038-f6da03ea2616" x="100" y="121" width="60" height="14" fontSize="8.0" pattern="#,##0.00#" hTextAlign="Left" vTextAlign="Top">
+					<expression><![CDATA[$P{totalAPagarCobranca}]]></expression>
+				</element>
+				<element kind="textField" uuid="6882db23-3e81-419a-93d0-af8cb2f33bea" x="100" y="92" width="60" height="14" fontSize="8.0">
+					<expression><![CDATA[$P{dataDocumento}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="line" uuid="e17c4bf3-3e3b-4eba-bf59-72c18d959724" key="line-2" mode="Opaque" x="403" y="68" width="100" height="1" forecolor="#000000" backcolor="#FFFFFF">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</element>
+				<element kind="textField" uuid="f678a2f0-db27-4fdd-b351-1246f7ee0541" positionType="FixRelativeToBottom" x="236" y="198" width="258" height="12" fontName="SansSerif" fontSize="8.0" hTextAlign="Center">
+					<expression><![CDATA[$P{numeroCodigo}]]></expression>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="textField" uuid="97449d96-b90c-4ccb-8da9-e482d5737c89" x="15" y="92" width="60" height="14">
+					<expression><![CDATA[$P{numeroNotaFiscal}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</element>
+				<element kind="component" uuid="6e961830-8a07-45c5-9360-9357575eeb66" positionType="FixRelativeToBottom" x="223" y="211" width="280" height="46">
+					<printWhenExpression><![CDATA[$P{codigoBarra} != null]]></printWhenExpression>
+					<component kind="barbecue" type="Int2of5" drawText="false" checksumRequired="false" barHeight="130">
+						<codeExpression><![CDATA[$P{codigoBarra}]]></codeExpression>
+					</component>
+					<property name="com.jaspersoft.studio.unit.barHeight" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.barWidth" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="9c6ffe69-1178-46db-b89d-cedbdb8b42a8" x="15" y="20" width="480" height="18" fontSize="8.0">
+					<text><![CDATA[Pagável nos bancos Safra, Itaú, Bradesco, Banco do Brasil, Santander, Caixa Econômica e Lotéricas]]></text>
+				</element>
+				<element kind="textField" uuid="f32d82aa-bf0e-4203-9a8c-c7eec63c5e65" x="213" y="39" width="122" height="12" fontSize="6.0">
+					<expression><![CDATA[$P{codigoCliente}]]></expression>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+				<element kind="staticText" uuid="81fe527d-b7e6-4889-b64b-530e00ded5f8" x="16" y="39" width="195" height="12" fontSize="6.0">
+					<text><![CDATA[PARA DÉBITO AUTOMÁTICO INFORME O CÓDIGO (DO USUÁRIO):]]></text>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</element>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

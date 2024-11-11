@@ -1,0 +1,1 @@
+UPDATE CPGAS_MENU SET CPME_URL = '/financeiro/banco/list' WHERE CPME_CD = 33;

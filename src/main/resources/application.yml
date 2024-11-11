@@ -1,0 +1,19 @@
+cors:
+  originPatterns: http://localhost:3000,http://localhost:4200,http://ggasv2.compagas.com.br,http://dsv.ggas.compagas.com.br
+security:
+  jwt:
+    token:
+      secret-key: 53cr377s558tfgp3cr377s558tfgp353
+      expire-length: 86400000
+spring:
+  profiles:
+    #        active: ${AMBIENTE_APP}
+    active: local
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+springdoc:
+  paths-to-match: /**
+  swagger-ui:
+    use-root-path: true
+

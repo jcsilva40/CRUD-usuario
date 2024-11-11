@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfdebitoconta" pageWidth="540" pageHeight="260" columnWidth="540" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="17a9ffa2-5924-4562-aa7f-74e7a6226734">
+	<parameter name="DAMV_VLDEBITO" class="java.lang.String"/>
+	<parameter name="VENCIMENTO" class="java.lang.String"/>
+	<parameter name="AGENCIA" class="java.lang.String"/>
+	<parameter name="CONTA" class="java.lang.String"/>
+	<parameter name="BANCO" class="java.lang.String"/>
+	<detail>
+		<band height="140" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<frame>
+				<reportElement x="0" y="0" width="534" height="120" uuid="32274e4b-85cf-474f-808f-5b0ec2337742">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<rectangle radius="15">
+					<reportElement x="1" y="20" width="510" height="84" backcolor="#FFFFFF" uuid="972daf5c-a540-4cb6-80ef-dd660192db35">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<graphicElement>
+						<pen lineWidth="0.05"/>
+					</graphicElement>
+				</rectangle>
+				<staticText>
+					<reportElement x="19" y="33" width="378" height="11" uuid="20d6eb18-43af-45d8-8c84-07f395ac280e">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Left">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Esta nota fiscal/fatura de gás será debitada em sua conta corrente na data do vencimento]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="19" y="44" width="47" height="11" uuid="5c75d811-d754-4c8b-b320-f35fe24e0a36">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Valor (R$):]]></text>
+				</staticText>
+				<textField pattern="#,##0.00#">
+					<reportElement x="66" y="44" width="100" height="11" uuid="a0f8b558-5879-477e-beb4-9ea43a725958"/>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{DAMV_VLDEBITO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="19" y="55" width="47" height="11" uuid="1cbf40e4-423b-4867-a1f3-ef4cf23d79f5">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<text><![CDATA[Agencia:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="66" y="55" width="100" height="11" uuid="d69e982a-39ce-4f6c-be55-48e978a82845">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{AGENCIA}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="19" y="67" width="47" height="11" uuid="d1ba3878-94e8-440c-b0f4-3ee1da70117e"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="SansSerif" size="8"/>
+					</textElement>
+					<text><![CDATA[Banco:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="66" y="67" width="100" height="11" uuid="99ee65cd-4c19-4fdd-8346-03a2f9f2bb8a">
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement verticalAlignment="Middle">
+						<font size="8"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{BANCO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="19" y="78" width="223" height="11" uuid="fac0ffd9-5edb-4a93-a36a-6eb06779759c">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Left">
+						<font size="8"/>
+					</textElement>
+					<text><![CDATA[Quitação condicionada ao lançamento no extrato]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

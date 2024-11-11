@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfimposto" pageWidth="290" pageHeight="56" columnWidth="290" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a31e9c55-f917-432a-bc0a-66e7fd958416">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="valorBaseCalculoICMS" class="java.lang.String"/>
+	<field name="valorICMS" class="java.lang.String"/>
+	<field name="valorAliquotaICMS" class="java.lang.String"/>
+	<detail>
+		<band height="19" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<frame>
+				<reportElement mode="Transparent" x="0" y="0" width="290" height="18" backcolor="#F0F0F0" uuid="d38a9af2-a7d1-481b-a48e-36ce58463da2">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.0"/>
+				</box>
+				<staticText>
+					<reportElement x="96" y="1" width="80" height="17" uuid="43a6d523-59b4-4843-ae63-08b033a35a86">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[base de cálculo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="176" y="1" width="80" height="17" uuid="b82ae404-ece4-4fcc-912d-7eccd52d6a9e">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[valor]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="48" y="1" width="48" height="17" uuid="7371b0e1-41c3-4ded-94c3-fc5bd3b7ac31">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[alíquota]]></text>
+				</staticText>
+				<textField pattern="#,##0.00#">
+					<reportElement x="109" y="9" width="67" height="8" uuid="b863fc4c-346f-46fa-a625-6e41f7d701aa">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorBaseCalculoICMS}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,##0.00#">
+					<reportElement x="189" y="9" width="67" height="8" uuid="d8866584-c9a3-4e9f-9db0-deb725826b19">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Right" verticalAlignment="Bottom">
+						<font size="6"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{valorICMS}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="10" y="1" width="30" height="17" uuid="cdcfa4d3-3fa7-413b-8b17-069c166125a3">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left">
+						<font size="7"/>
+					</textElement>
+					<text><![CDATA[Tributo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="13" y="9" width="25" height="8" uuid="6f329094-bef3-49a5-b37a-794fb9019dd8">
+						<property name="com.jaspersoft.studio.unit.width" value="px"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left">
+						<font size="6"/>
+					</textElement>
+					<text><![CDATA[ICMS]]></text>
+				</staticText>
+			</frame>
+			<textField>
+				<reportElement x="48" y="9" width="48" height="8" uuid="7b9796f8-374e-49f3-b73a-bb29209f25b1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valorAliquotaICMS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

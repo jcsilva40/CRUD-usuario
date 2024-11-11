@@ -1,0 +1,1 @@
+CALL insert_cpgas_menu('Corretor de Vazão', 'fas fa-tachometer-alt', '/medicao/corretorVazao', 3, 20);

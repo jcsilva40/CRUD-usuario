@@ -1,0 +1,64 @@
+#No spring com o conceito de REST é muito usado ter a raiz para o front
+#e ter o /api após para indicar o back, assim com o código abaixo
+#para fazer qualquer consulta depois de localhost: 8080 teria que adicionar o /api
+#e depois que adicionaria o resto do path ex: localhost:8080/api/login 
+server:
+  servlet:
+    contextPath: /api
+  port : ${API_PORT}
+minio:
+  endpoint: http://172.21.3.227:9000
+  bucketName: ggasfiles
+  accessKey: rt3scxW2H7DrJzDv5dXO
+  secretKey: qjq2nRWxkcElcxUClD2KIlE87OHF35NzAIvnlP7d
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+
+    hikari:
+      minimumIdle: 5
+      maximumPoolSize: 20
+      idleTimeout: 30000
+      maxLifetime: 2000000
+      connectionTimeout: 30000
+      poolName: HikariPoolBooks
+  flyway:
+    baselineOnMigrate: true
+    baselineVersion: 1
+    locations: classpath:db/migration
+
+  jpa:
+    #        database-platform: org.hibernate.dialect.Oracle10gDialect
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+  groovy:
+    template:
+      check-template-location: false
+#        hibernate:
+#                ddl-auto: update 
+
+
+# Codigo abaixo comentado serve para configurar o servidor de email, para usar o spring mail
+#    mail:
+#        host: smtp.office365.com
+#        port: 587
+#        username: fulanoTesteTemp@outlook.com
+#        password: ciclanoteste1
+#        properties:
+#            mail:   
+#                smtp:  
+#                    auth: true
+#                    starttls:
+#                        enable: true
+configuracoes:
+  ldap:
+    urls: ldap://${LDAP_HOST}:${LDAP_PORT}
+    base: ${LDAP_DOMAIN}
+#logging:
+#  level:
+#    root: error

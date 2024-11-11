@@ -1,0 +1,25 @@
+package com.stfn2.ggas.domain.enumTypes.converter;
+
+import com.stfn2.ggas.domain.enumTypes.CodigoCarteiraCobrancaEnum;
+import jakarta.persistence.AttributeConverter;
+import jakarta.persistence.Converter;
+
+@Converter(autoApply = true)
+public class CodigoCarteiraCobrancaConverter implements AttributeConverter<CodigoCarteiraCobrancaEnum, Long> {
+
+    @Override
+    public Long convertToDatabaseColumn(CodigoCarteiraCobrancaEnum objeto) {
+        if (objeto == null) {
+            return null;
+        }
+        return objeto.getId();
+    }
+
+    @Override
+    public CodigoCarteiraCobrancaEnum convertToEntityAttribute(Long id) {
+        if (id == null) {
+            return null;
+        }
+        return CodigoCarteiraCobrancaEnum.toEnum(id);
+    }
+}

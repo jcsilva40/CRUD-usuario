@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nfhistorico" pageWidth="240" pageHeight="130" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="8894066b-aa77-4ebb-970c-2e9a2e24bc2f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="notaFiscalFatura" class="java.lang.String"/>
+	<field name="volumeMedido" class="java.lang.String"/>
+	<field name="valor" class="java.lang.String"/>
+	<field name="vencimento" class="java.lang.String"/>
+	<field name="pagamento" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="10">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement x="0" y="0" width="36" height="8" uuid="128aed16-0907-4c46-9555-5619fdb20357"/>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[fatura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="0" width="40" height="8" uuid="930dd3a6-f91f-4f5e-85f5-5223605ca049">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[consumo m3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="83" y="0" width="45" height="8" uuid="1ec66dfe-39ee-4385-b0dd-5af654a5ff9d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[valor total R$]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="131" y="0" width="50" height="8" uuid="7843b7f4-29f1-4ab8-b363-d7dda724fa35">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[vencimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="0" width="44" height="8" uuid="1332c009-3b1a-4bb1-8299-ef054e839fff">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<text><![CDATA[pagamento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="8" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField>
+				<reportElement x="0" y="0" width="36" height="8" uuid="a347cf48-8f94-4027-8fd3-f0419361c15b">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{notaFiscalFatura}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.0000;(#,##0.0000-)">
+				<reportElement x="41" y="0" width="40" height="8" uuid="bde85bd7-7cf2-4a37-ad32-d2913cbe0fb3">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{volumeMedido}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00#;(#,##0.00#-)">
+				<reportElement x="83" y="0" width="45" height="8" uuid="e11debd3-0b39-476a-9e82-1d0883887cfd">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{valor}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement x="131" y="0" width="50" height="8" uuid="3297040c-8f9e-4d45-b28e-5360ad6d1f19">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vencimento}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="186" y="0" width="43" height="8" uuid="5a41b17f-8840-44ea-a39d-7ee9694f33a4">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pagamento}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
